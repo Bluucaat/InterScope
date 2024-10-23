@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.util.Objects;
 
@@ -13,11 +14,11 @@ public class InterscopeApplication extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("interscope.fxml")));
-        Scene scene = new Scene(root, 880, 520);
+        Scene scene = new Scene(root, 878, 500);
         scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/styles/menu.css")).toExternalForm());
 
         primaryStage.setScene(scene);
-        primaryStage.setTitle("Welcome to InterScope!");
+        primaryStage.setResizable(false);
         primaryStage.show();
     }
 
