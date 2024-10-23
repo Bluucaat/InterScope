@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<HBox xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.unideb.interscope.InterscopeController"
+      spacing="15" style="-fx-background-color: #111016;" alignment="TOP_LEFT" prefWidth="880" prefHeight="520">
+
+    <GridPane fx:id="buttonGrid" hgap="25" vgap="25">
+        <padding>
+            <Insets top="40" right="30" bottom="20" left="30"/>
+        </padding>
+            <Button fx:id="button1" prefWidth="190" prefHeight="190" styleClass="big-button"/>
+            <Button fx:id="button2" prefWidth="190" prefHeight="190" styleClass="big-button" GridPane.columnIndex="1"/>
+            <Button fx:id="button3" prefWidth="190" prefHeight="190" styleClass="big-button" GridPane.columnIndex="2"/>
+            <Button fx:id="button4" prefWidth="190" prefHeight="190" styleClass="big-button" GridPane.rowIndex="1"/>
+            <Button fx:id="button5" prefWidth="190" prefHeight="190" styleClass="big-button" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+            <Button fx:id="button6" prefWidth="190" prefHeight="190" styleClass="big-button" GridPane.columnIndex="2" GridPane.rowIndex="1"/>
+
+    </GridPane>
+
+    <VBox alignment="TOP_CENTER" spacing="20" prefWidth="140">
+        <padding>
+            <Insets top="20" right="20" bottom="20" left="0"/>
+        </padding>
+        <ImageView fx:id="logo" fitWidth="120" preserveRatio="true"/>
+        <!-- INTERSCOPE text -->
+        <Text fx:id="interscopeText" text="INTERSCOPE" styleClass="interscope-text"/>
+        <Text fx:id="description" wrappingWidth="130" styleClass="description-text"
+              text="WELCOME TO INTERSCOPE! THIS APPLICATION COMBINES OSINT TOOLS INTO ONE TO MAKE THE USER'S LIFE SIMPLER. THIS IS JUST SOME RANDOM DESCRIPTION I HAVE NO IDEA WHAT TO WRITE HERE FOR NOW. DEVELOPED BY BLUCAT ON GITHUB AND OTHER STUFF TO MAKE THIS BOX FEEL BIGGER AND NICER FOR NOW AND YEA."/>
+    </VBox>
+</HBox>
