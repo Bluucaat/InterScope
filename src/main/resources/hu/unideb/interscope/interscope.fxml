@@ -8,6 +8,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.Region?>
 <HBox xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.unideb.interscope.InterscopeController"
       spacing="15" style="-fx-background-color: #111016;" prefWidth="870" prefHeight="500">
 
@@ -15,14 +18,22 @@
         <padding>
             <Insets top="40" right="20" bottom="20" left="30"/>
         </padding>
-        <Button fx:id="button1" prefWidth="190" prefHeight="190" styleClass="big-button"/>
+        <Button fx:id="userSearch" prefWidth="190" prefHeight="190" styleClass="big-button">
+        <graphic>
+            <ImageView fx:id="userSearchLogo" fitWidth="170" preserveRatio="true"/>
+        </graphic>
+        </Button>
         <Button fx:id="button2" prefWidth="190" prefHeight="190" styleClass="big-button" GridPane.columnIndex="1"/>
         <Button fx:id="button3" prefWidth="190" prefHeight="190" styleClass="big-button" GridPane.columnIndex="2"/>
         <Button fx:id="button4" prefWidth="190" prefHeight="190" styleClass="big-button" GridPane.rowIndex="1"/>
         <Button fx:id="button5" prefWidth="190" prefHeight="190" styleClass="big-button" GridPane.columnIndex="1"
                 GridPane.rowIndex="1"/>
-        <Button fx:id="button6" prefWidth="190" prefHeight="190" styleClass="big-button" GridPane.columnIndex="2"
-                GridPane.rowIndex="1"/>
+        <Button fx:id="exitButton" prefWidth="190" prefHeight="190" styleClass="big-button" GridPane.columnIndex="2"
+                GridPane.rowIndex="1" onAction="#closeApplication">
+            <graphic>
+                <ImageView fx:id="exitLogo" fitWidth="170" preserveRatio="true"/>
+            </graphic>
+        </Button>
 
     </GridPane>
 
@@ -30,8 +41,7 @@
         <padding>
             <Insets top="50" right="20" bottom="20"/>
         </padding>
-        <ImageView fx:id="logo" fitWidth="160" preserveRatio="true"/>
-        <!-- INTERSCOPE text -->
+        <ImageView fx:id="appLogo" fitWidth="160" preserveRatio="true"/>
         <Text fx:id="interscopeText" text="INTERSCOPE" styleClass="interscope-text"/>
         <Text fx:id="description" wrappingWidth="150" styleClass="description-text"
               text="Welcome to InterScope! InterScope is an application that consolidates the functionality of OSINT tools into a single, user-friendly platform, making it accessible without prior expertise. Developed by Ribár Krisztián as part of a thesis project."

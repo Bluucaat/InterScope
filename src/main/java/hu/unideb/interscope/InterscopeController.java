@@ -10,8 +10,15 @@ import javafx.scene.text.Text;
 public class InterscopeController {
 
     public Text interscopeText;
+
     @FXML
-    private Button button1;
+    private ImageView appLogo;
+    @FXML
+    private ImageView userSearchLogo;
+    @FXML
+    private ImageView exitLogo;
+    @FXML
+    private Button userSearch;
     @FXML
     private Button button2;
     @FXML
@@ -21,10 +28,9 @@ public class InterscopeController {
     @FXML
     private Button button5;
     @FXML
-    private Button button6;
+    private Button exitButton;
 
-    @FXML
-    private ImageView logo;
+
 
     @FXML
     private Text title;
@@ -33,10 +39,17 @@ public class InterscopeController {
 
     @FXML
     public void initialize() {
-        logo.setImage(new Image("/MenuLogo.png"));
-        Font.loadFont(getClass().getResourceAsStream("/JuliusSansOne.ttf"), 18);
-        interscopeText.setFont(Font.font("Julius Sans One", 18));
-        description.setFont(Font.font("Julius Sans One", 11));
+
+        appLogo.setImage(new Image("/MenuLogo.png"));
+        exitLogo.setImage(new Image("exitLogo.png"));
+        userSearchLogo.setImage(new Image("/userSearchLogo.png"));
+        Font.loadFont(getClass().getResourceAsStream("/fonts/JuliusSansOne.ttf"), 18);
+        exitButton.setGraphic(exitLogo);
     }
+
+    @FXML
+    public void closeApplication(){
+            System.exit(0);
     }
+}
 
