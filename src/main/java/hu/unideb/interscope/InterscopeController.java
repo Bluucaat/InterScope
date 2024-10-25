@@ -16,15 +16,27 @@ import javafx.animation.ScaleTransition;
 import javafx.scene.Node;
 
 public class InterscopeController {
+    private enum AppPart {
+        MAINMENU, SIDEMENU
+    }
 
     @FXML
-    public Button emailButton;
+    public Button backButton;
+
+    @FXML
+    private GridPane mainGrid;
     @FXML
     private GridPane userSearchGrid;
     @FXML
     public GridPane locationSearchGrid;
     @FXML
-    private GridPane mainGrid;
+    public GridPane emailSearchGrid;
+    @FXML
+    public GridPane logsGrid;
+    @FXML
+    public GridPane preferencesGrid;
+
+    public GridPane activeGrid;
 
     @FXML
     private ImageView appLogo;
@@ -41,7 +53,6 @@ public class InterscopeController {
     @FXML
     private ImageView exitLogo;
 
-
     @FXML
     public Text title;
     @FXML
@@ -56,27 +67,56 @@ public class InterscopeController {
         logsLogo.setImage(new Image("/logsLogo.png"));
         preferencesLogo.setImage(new Image("/preferencesLogo.png"));
         exitLogo.setImage(new Image("exitLogo.png"));
-
+        backButton.setTranslateY(100);
+        backButton.setTranslateX(mainGrid.getWidth() - backButton.getWidth() - 20);
+        activeGrid = mainGrid;
 
         Font.loadFont(getClass().getResourceAsStream("/fonts/JuliusSansOne.ttf"), 18);
     }
 
     @FXML
     public void handleMenuButtonClick(ActionEvent event) {
-        swapGrids(userSearchGrid);
+        swapGrids(userSearchGrid, AppPart.MAINMENU);
         title.setText("Username Search");
-        description.setText("The username search looks across a lot of famous websites. please be aware that the searches are conducted using your machine's resources, and from your IP address, so search accordingly.");
+        description.setText("The username search looks across a lot of famous websites. please be aware that the searches " +
+                "are conducted using your machine's resources, and from your IP address, so search accordingly.");
     }
 
     @FXML
-    public void handleLocationButtonClick(ActionEvent event) {
-        swapGrids(locationSearchGrid);
+    public void handleLocationButtonClick() {
+        swapGrids(locationSearchGrid, AppPart.MAINMENU);
         title.setText("Location Search");
+        description.setText("The Location search uses AI to analyze an image uploaded to the application and attempts to approximate where the photo is taken." +
+                "In the absence of GPS EXIF data, the system provides GPS estimation.");
     }
 
     @FXML
-    public void handleLogsButtonClick(ActionEvent event) {
-        //TODO
+    public void handleEmailButtonClick() {
+        swapGrids(emailSearchGrid, AppPart.MAINMENU);
+        title.setText("Email Search");
+        description.setText("The Domain Search returns all the email addresses found using one given domain name, with sources.\n" +
+                "The Email Finder finds the most likely email address from a domain name, a first name and a last name.");
+    }
+
+    @FXML
+    public void handleLogButtonClick() {
+        swapGrids(logsGrid, AppPart.MAINMENU);
+        title.setText("Previous Searches");
+        description.setText("Here you can find your previous searches. Maybe i will also implement a way to" +
+                "re-do the searches with the same parameters, although its unlikely.");
+    }
+    @FXML
+    public void handlePreferencesButtonClick() {
+        swapGrids(preferencesGrid, AppPart.MAINMENU);
+    }
+
+    @FXML
+    public void handleBackButtonClick() {
+        swapGrids(activeGrid, AppPart.SIDEMENU);
+        title.setText("InterScope");
+        description.setText("Welcome to InterScope! InterScope is an application that consolidates the functionality of OSINT" +
+                " tools into a single, user-friendly platform, making it accessible without prior expertise. Developed by Ribár Krisztián " +
+                "as part of a thesis project.");
     }
 
     @FXML
@@ -107,34 +147,60 @@ public class InterscopeController {
         scaleDown.setToX(1.0);
         scaleDown.setToY(1.0);
 
-        // On Mouse Entered: Scale Up
         if (event.getEventType() == MouseEvent.MOUSE_ENTERED) {
             scaleUp.play();
-        }
-        // On Mouse Exited: Scale Down
-        else if (event.getEventType() == MouseEvent.MOUSE_EXITED) {
+        } else if (event.getEventType() == MouseEvent.MOUSE_EXITED) {
             scaleDown.play();
         }
     }
 
-    private void swapGrids(GridPane grid) {
-        grid.setVisible(true);
-        grid.setTranslateX(mainGrid.getTranslateX() - 100);
-        grid.setTranslateY(-grid.getPrefHeight());
-        slideGridPaneOffScreen(mainGrid);
-        slideGridIn(grid);
-
+    private void swapGrids(GridPane grid, AppPart appPart) {
+        if (appPart == AppPart.MAINMENU) {
+            slideMainGridOut(mainGrid);
+            slideSideGridIn(grid);
+            slideBackButtonUp();
+            activeGrid = grid;
+        } else if (appPart == AppPart.SIDEMENU) {
+            slideSideGridOut(grid);
+            slideMainGridIn(mainGrid);
+            slideBackButtonDown();
+            activeGrid = mainGrid;
+        }
     }
 
-    private void slideGridPaneOffScreen(GridPane gridPane) {
+    private void slideMainGridOut(GridPane gridPane) {
         TranslateTransition transition = new TranslateTransition(Duration.seconds(0.3), gridPane);
         transition.setByY(660);
         transition.play();
     }
 
-    private void slideGridIn(GridPane gridPane) {
+    private void slideMainGridIn(GridPane gridPane) {
+        TranslateTransition transition = new TranslateTransition(Duration.seconds(0.3), gridPane);
+        transition.setByY(-660);
+        transition.play();
+    }
+
+    private void slideSideGridIn(GridPane gridPane) {
         TranslateTransition transition = new TranslateTransition(Duration.seconds(0.3), gridPane);
         transition.setToY(mainGrid.getTranslateY() - 10);
+        transition.play();
+    }
+
+    private void slideSideGridOut(GridPane gridPane) {
+        TranslateTransition transition = new TranslateTransition(Duration.seconds(0.3), gridPane);
+        transition.setToY(-(mainGrid.getTranslateY() - 10));
+        transition.play();
+    }
+
+    private void slideBackButtonUp() {
+        TranslateTransition transition = new TranslateTransition(Duration.seconds(0.3), backButton);
+        transition.setToY(30);
+        transition.play();
+    }
+
+    private void slideBackButtonDown() {
+        TranslateTransition transition = new TranslateTransition(Duration.seconds(0.3), backButton);
+        transition.setToY(100);
         transition.play();
     }
 

@@ -13,7 +13,7 @@ public class InterscopeApplication extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("interscope.fxml")));
-        Scene scene = new Scene(root, 878, 500);
+        Scene scene = new Scene(root, 888, 500);
         scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/styles/menu.css")).toExternalForm());
 
         primaryStage.setScene(scene);
