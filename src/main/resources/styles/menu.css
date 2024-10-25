@@ -15,6 +15,11 @@
     -fx-background-color: #1B1B28;
 }
 
+.button-text{
+    -fx-text-fill: white;
+    fx-font-size: 16;
+}
+
 .interscope-text {
     -fx-fill: #FFFFFF;
     -fx-font-size: 18px;

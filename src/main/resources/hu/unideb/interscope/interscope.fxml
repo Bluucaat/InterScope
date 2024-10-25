@@ -7,48 +7,104 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
-
 <?import javafx.scene.layout.StackPane?>
+
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.Region?>
-<HBox xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.unideb.interscope.InterscopeController"
-      spacing="15" style="-fx-background-color: #111016;" prefWidth="870" prefHeight="500">
+<StackPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.unideb.interscope.InterscopeController"
+           fx:id="rootPane" style="-fx-background-color: #111016;" prefWidth="870" prefHeight="500">
+    <HBox>
+        <GridPane fx:id="mainGrid" hgap="25" vgap="25">
+            <padding>
+                <Insets top="40" right="20" bottom="20" left="30"/>
+            </padding>
 
-    <GridPane hgap="25" vgap="25">
-        <padding>
-            <Insets top="40" right="20" bottom="20" left="30"/>
-        </padding>
-        <Button fx:id="userSearch" prefWidth="190" prefHeight="190" styleClass="big-button">
-        <graphic>
-            <ImageView fx:id="userSearchLogo" fitWidth="170" preserveRatio="true"/>
-        </graphic>
-        </Button>
-        <Button fx:id="button2" prefWidth="190" prefHeight="190" styleClass="big-button" GridPane.columnIndex="1"/>
-        <Button fx:id="button3" prefWidth="190" prefHeight="190" styleClass="big-button" GridPane.columnIndex="2"/>
-        <Button fx:id="button4" prefWidth="190" prefHeight="190" styleClass="big-button" GridPane.rowIndex="1"/>
-        <Button fx:id="button5" prefWidth="190" prefHeight="190" styleClass="big-button" GridPane.columnIndex="1"
-                GridPane.rowIndex="1"/>
-        <Button fx:id="exitButton" prefWidth="190" prefHeight="190" styleClass="big-button" GridPane.columnIndex="2"
-                GridPane.rowIndex="1" onAction="#closeApplication">
-            <graphic>
-                <ImageView fx:id="exitLogo" fitWidth="170" preserveRatio="true"/>
-            </graphic>
-        </Button>
+            <Button fx:id="userSearch" prefWidth="190" prefHeight="190" styleClass="big-button"
+                    onAction="#handleMenuButtonClick" onMouseEntered="#handleLogoHover"
+                    onMouseExited="#handleLogoHover">
+                <graphic>
+                    <VBox alignment="CENTER" translateY="12" spacing="24">
+                        <ImageView fx:id="userLogo" fitWidth="96" preserveRatio="true"/>
+                        <Label text="user search" styleClass="button-text"/>
+                    </VBox>
+                </graphic>
+            </Button>
 
+            <Button fx:id="locationButton" prefWidth="190" prefHeight="190" styleClass="big-button"
+                    GridPane.columnIndex="1"
+                    onAction="#handleLocationButtonClick" onMouseEntered="#handleLogoHover" onMouseExited="#handleLogoHover">
+                <graphic>
+                    <VBox alignment="CENTER" translateY="10" spacing="20">
+                        <ImageView fx:id="locationLogo" fitWidth="100" preserveRatio="true"/>
+                        <Label text="email search" styleClass="button-text"/>
+                    </VBox>
+                </graphic>
+            </Button>
+
+            <Button fx:id="emailButton" prefWidth="190" prefHeight="190" styleClass="big-button"
+                    GridPane.columnIndex="2"
+                    onAction="#handleMenuButtonClick" onMouseEntered="#handleLogoHover"
+                    onMouseExited="#handleLogoHover">
+                <graphic>
+                    <VBox alignment="CENTER" translateY="10" spacing="20">
+                        <ImageView fx:id="emailLogo" fitWidth="100" preserveRatio="true"/>
+                        <Label text="email search" styleClass="button-text"/>
+                    </VBox>
+                </graphic>
+            </Button>
+
+            <Button fx:id="logsButton" prefWidth="190" prefHeight="190" styleClass="big-button" GridPane.rowIndex="1"
+                    onAction="#handleMenuButtonClick" onMouseEntered="#handleLogoHover" onMouseExited="#handleLogoHover">
+                <graphic>
+                    <VBox alignment="CENTER" translateY="12" spacing="20">
+                        <ImageView fx:id="logsLogo" fitWidth="100" preserveRatio="true"/>
+                        <Label text="email search" styleClass="button-text"/>
+                    </VBox>
+                </graphic>
+            </Button>
+            <Button fx:id="settingsButton" prefWidth="190" prefHeight="190" styleClass="big-button" GridPane.columnIndex="1" GridPane.rowIndex="1"
+                    onAction="#handleMenuButtonClick" onMouseEntered="#handleLogoHover" onMouseExited="#handleLogoHover">
+                <graphic>
+                    <VBox alignment="CENTER" translateY="10" spacing="20">
+                        <ImageView fx:id="preferencesLogo" fitWidth="100" preserveRatio="true"/>
+                        <Label text="prefrences" styleClass="button-text"/>
+                    </VBox>
+                </graphic>
+            </Button>
+            <Button fx:id="exitButton" prefWidth="190" prefHeight="190" styleClass="big-button" GridPane.columnIndex="2" GridPane.rowIndex="1"
+                    onAction="#closeApplication" onMouseEntered="#handleLogoHover" onMouseExited="#handleLogoHover">
+                <graphic>
+                    <VBox alignment="CENTER" translateY="13" spacing="23">
+                    <ImageView fx:id="exitLogo" fitWidth="95" preserveRatio="true"/>
+                        <Label text="close application" styleClass="button-text"/>
+                    </VBox>
+                </graphic>
+            </Button>
+        </GridPane>
+        <VBox alignment="TOP_CENTER" spacing="10" prefWidth="140">
+            <padding>
+                <Insets top="50" right="20" bottom="20"/>
+            </padding>
+            <ImageView fx:id="appLogo" fitWidth="180" preserveRatio="true"/>
+            <Text fx:id="title" text="INTERSCOPE" styleClass="interscope-text"/>
+            <Text fx:id="description" wrappingWidth="150" styleClass="description-text"
+                  text="Welcome to InterScope! InterScope is an application that consolidates the functionality of OSINT tools into a single, user-friendly platform, making it accessible without prior expertise. Developed by Ribár Krisztián as part of a thesis project."
+                  VBox.vgrow="ALWAYS">
+                <VBox.margin>
+                    <Insets top="20"/>
+                </VBox.margin>
+            </Text>
+        </VBox>
+    </HBox>
+    <GridPane fx:id="userSearchGrid"
+              style="-fx-background-color: #1B1B28; -fx-border-radius: 10px; -fx-background-radius: 10px;"
+              prefHeight="405" prefWidth="630" maxHeight="405" maxWidth="620"
+              translateY="-600" visible="false">
+        <Label text="pitsa"/>
     </GridPane>
-
-    <VBox alignment="TOP_CENTER" spacing="10" prefWidth="140">
-        <padding>
-            <Insets top="50" right="20" bottom="20"/>
-        </padding>
-        <ImageView fx:id="appLogo" fitWidth="160" preserveRatio="true"/>
-        <Text fx:id="interscopeText" text="INTERSCOPE" styleClass="interscope-text"/>
-        <Text fx:id="description" wrappingWidth="150" styleClass="description-text"
-              text="Welcome to InterScope! InterScope is an application that consolidates the functionality of OSINT tools into a single, user-friendly platform, making it accessible without prior expertise. Developed by Ribár Krisztián as part of a thesis project."
-              VBox.vgrow="ALWAYS">
-            <VBox.margin>
-                <Insets top="20"/>
-            </VBox.margin>
-        </Text>
-    </VBox>
-</HBox>
+    <GridPane fx:id="locationSearchGrid"
+              style="-fx-background-color: #1B1B28; -fx-border-radius: 10px; -fx-background-radius: 10px;"
+              prefHeight="405" prefWidth="630" maxHeight="405" maxWidth="620"
+              translateY="-600" visible="false">
+        <Label text="fasz"/>
+    </GridPane>
+</StackPane>
