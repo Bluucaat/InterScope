@@ -4,6 +4,7 @@ import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -54,7 +55,7 @@ public class InterscopeController {
     private ImageView exitLogo;
 
     @FXML
-    public Text title;
+    public Label title;
     @FXML
     private Text description;
 
@@ -70,14 +71,13 @@ public class InterscopeController {
         backButton.setTranslateY(100);
         backButton.setTranslateX(mainGrid.getWidth() - backButton.getWidth() - 20);
         activeGrid = mainGrid;
-
         Font.loadFont(getClass().getResourceAsStream("/fonts/JuliusSansOne.ttf"), 18);
     }
 
     @FXML
     public void handleMenuButtonClick(ActionEvent event) {
         swapGrids(userSearchGrid, AppPart.MAINMENU);
-        title.setText("Username Search");
+        title.setText("Username\nSearch");
         description.setText("The username search looks across a lot of famous websites. please be aware that the searches " +
                 "are conducted using your machine's resources, and from your IP address, so search accordingly.");
     }
@@ -85,7 +85,7 @@ public class InterscopeController {
     @FXML
     public void handleLocationButtonClick() {
         swapGrids(locationSearchGrid, AppPart.MAINMENU);
-        title.setText("Location Search");
+        title.setText("Location\nSearch");
         description.setText("The Location search uses AI to analyze an image uploaded to the application and attempts to approximate where the photo is taken." +
                 "In the absence of GPS EXIF data, the system provides GPS estimation.");
     }
@@ -101,7 +101,7 @@ public class InterscopeController {
     @FXML
     public void handleLogButtonClick() {
         swapGrids(logsGrid, AppPart.MAINMENU);
-        title.setText("Previous Searches");
+        title.setText("Previous\nSearches");
         description.setText("Here you can find your previous searches. Maybe i will also implement a way to" +
                 "re-do the searches with the same parameters, although its unlikely.");
     }
@@ -123,7 +123,6 @@ public class InterscopeController {
     public void handleLogoHover(MouseEvent event) {
         Node source = (Node) event.getSource();
         ImageView imageView = null;
-
         if (source instanceof Button button) {
             if (button.getGraphic() instanceof VBox vbox) {
                 for (Node node : vbox.getChildren()) {
@@ -134,7 +133,6 @@ public class InterscopeController {
                 }
             }
         }
-
         if (imageView == null) {
             return;
         }
@@ -142,7 +140,6 @@ public class InterscopeController {
         ScaleTransition scaleUp = new ScaleTransition(Duration.millis(200), imageView);
         scaleUp.setToX(1.3);
         scaleUp.setToY(1.3);
-
         ScaleTransition scaleDown = new ScaleTransition(Duration.millis(200), imageView);
         scaleDown.setToX(1.0);
         scaleDown.setToY(1.0);
@@ -182,19 +179,19 @@ public class InterscopeController {
 
     private void slideSideGridIn(GridPane gridPane) {
         TranslateTransition transition = new TranslateTransition(Duration.seconds(0.3), gridPane);
-        transition.setToY(mainGrid.getTranslateY() - 10);
+        transition.setToY(mainGrid.getTranslateY());
         transition.play();
     }
 
     private void slideSideGridOut(GridPane gridPane) {
         TranslateTransition transition = new TranslateTransition(Duration.seconds(0.3), gridPane);
-        transition.setToY(-(mainGrid.getTranslateY() - 10));
+        transition.setToY(-(mainGrid.getTranslateY()));
         transition.play();
     }
 
     private void slideBackButtonUp() {
         TranslateTransition transition = new TranslateTransition(Duration.seconds(0.3), backButton);
-        transition.setToY(30);
+        transition.setToY(5);
         transition.play();
     }
 

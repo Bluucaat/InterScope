@@ -3,8 +3,8 @@
     -fx-text-fill: white;
     -fx-font-size: 16px;
     -fx-font-family: 'Julius Sans One';
-    -fx-border-radius: 15px;
-    -fx-background-radius: 15px;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
 }
 
 .big-button:hover {
@@ -21,11 +21,11 @@
 }
 
 .interscope-text {
-    -fx-fill: #FFFFFF;
-    -fx-font-size: 20px;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 24px;
     -fx-font-family: 'Julius Sans One';
     -fx-text-alignment: center;
-    -fx-padding: 0 0 20 0;
+    -fx-padding: 10 0 40 0;
 }
 
 .description-text {
@@ -33,4 +33,10 @@
     -fx-font-size: 12px;
     -fx-text-alignment: center;
     -fx-font-family: 'Julius Sans One';
+}
+.grid {
+    -fx-padding: 0 0 0 40;
+    -fx-background-color: #1B1B28;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
 }

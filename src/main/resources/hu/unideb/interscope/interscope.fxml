@@ -8,19 +8,18 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.layout.StackPane?>
-
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.layout.AnchorPane?>
+
 <StackPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.unideb.interscope.InterscopeController"
            fx:id="rootPane" style="-fx-background-color: #111016;" prefWidth="888" prefHeight="500">
 
     <HBox alignment="CENTER" HBox.hgrow="ALWAYS">
-        <GridPane fx:id="mainGrid" hgap="50" vgap="50">
+        <GridPane alignment="CENTER" fx:id="mainGrid" hgap="45" vgap="60">
             <padding>
-                <Insets top="50" right="30" bottom="20" left="30"/>
+                <Insets right="40"/>
             </padding>
-
             <Button fx:id="userSearch" prefWidth="165" prefHeight="165" styleClass="big-button"
                     onAction="#handleMenuButtonClick" onMouseEntered="#handleLogoHover"
                     onMouseExited="#handleLogoHover">
@@ -73,7 +72,7 @@
                 <graphic>
                     <VBox alignment="CENTER" translateY="10" spacing="20">
                         <ImageView fx:id="preferencesLogo" fitWidth="80" preserveRatio="true"/>
-                        <Label text="prefrences" styleClass="button-text"/>
+                        <Label text="preferences" styleClass="button-text"/>
                     </VBox>
                 </graphic>
             </Button>
@@ -83,53 +82,34 @@
                 <graphic>
                     <VBox alignment="CENTER" translateY="13" spacing="23">
                         <ImageView fx:id="exitLogo" fitWidth="75" preserveRatio="true"/>
-                        <Label text="close application" styleClass="button-text"/>
+                        <Label text="close app" styleClass="button-text"/>
                     </VBox>
                 </graphic>
             </Button>
         </GridPane>
         <Line startY="200" endY="700.0"
-              stroke="#656465" strokeLineCap="BUTT" strokeWidth="2">
-        </Line>
-        <VBox alignment="TOP_CENTER" spacing="10" prefWidth="140">
+              stroke="#414045" strokeLineCap="BUTT" strokeWidth="2"/>
+        <VBox alignment="TOP_CENTER" prefWidth="140">
             <padding>
-                <Insets top="50" right="20" left="20" bottom="20"/>
+                <Insets top="30" left="25"/>
             </padding>
-            <ImageView fx:id="appLogo" fitWidth="160" preserveRatio="true"/>
-            <Text fx:id="title" text="INTERSCOPE" wrappingWidth="150" styleClass="interscope-text"/>
-            <Text fx:id="description" wrappingWidth="150" styleClass="description-text"
+            <ImageView fx:id="appLogo" fitWidth="170" preserveRatio="true"/>
+            <Label fx:id="title" text="INTERSCOPE" styleClass="interscope-text"/>
+            <Text fx:id="description" wrappingWidth="160" styleClass="description-text"
                   text="Welcome to InterScope! InterScope is an application that consolidates the functionality of OSINT tools into a single, user-friendly platform, making it accessible without prior expertise. Developed by Ribár Krisztián as part of a thesis project."
-                  VBox.vgrow="ALWAYS">
-            </Text>
-            <AnchorPane>
-                <Button fx:id="backButton" text="Back" AnchorPane.rightAnchor="30" AnchorPane.bottomAnchor="10"
-                        styleClass="big-button" onAction="#handleBackButtonClick" onMouseEntered="#handleLogoHover"
-                        onMouseExited="#handleLogoHover"/>
-            </AnchorPane>
+                  VBox.vgrow="ALWAYS"/>
         </VBox>
     </HBox>
-    <GridPane fx:id="userSearchGrid"
-              style="-fx-padding: 0 0 0 40; -fx-background-color: #1B1B28; -fx-border-radius: 10px; -fx-background-radius: 10px;"
-              prefHeight="405" prefWidth="620" maxHeight="405" maxWidth="620" translateX="-120" translateY="-600">
-    </GridPane>
 
-    <GridPane fx:id="locationSearchGrid"
-              style="-fx-padding: 0 0 0 40; -fx-background-color: #1B1B28; -fx-border-radius: 10px; -fx-background-radius: 10px;"
-              prefHeight="405" prefWidth="620" maxHeight="405" maxWidth="620" translateX="-120" translateY="-600">
-    </GridPane>
+    <AnchorPane pickOnBounds="false" translateX="-40">
+        <Button fx:id="backButton" text="Back" AnchorPane.rightAnchor="30" AnchorPane.bottomAnchor="20"
+                styleClass="big-button" onAction="#handleBackButtonClick" onMouseEntered="#handleLogoHover"
+                onMouseExited="#handleLogoHover"/>
+    </AnchorPane>
 
-    <GridPane fx:id="emailSearchGrid"
-              style="-fx-padding: 0 0 0 40; -fx-background-color: #1B1B28; -fx-border-radius: 10px; -fx-background-radius: 10px;"
-              prefHeight="405" prefWidth="620" maxHeight="405" maxWidth="620" translateX="-120" translateY="-600">
-    </GridPane>
-
-    <GridPane fx:id="logsGrid"
-              style="-fx-padding: 0 0 0 40; -fx-background-color: #1B1B28; -fx-border-radius: 10px; -fx-background-radius: 10px;"
-              prefHeight="405" prefWidth="620" maxHeight="405" maxWidth="620" translateX="-120" translateY="-600">
-    </GridPane>
-
-    <GridPane fx:id="preferencesGrid"
-              style="-fx-padding: 0 0 0 40; -fx-background-color: #1B1B28; -fx-border-radius: 10px; -fx-background-radius: 10px;"
-              prefHeight="405" prefWidth="620" maxHeight="405" maxWidth="620" translateX="-120" translateY="-600">
-    </GridPane>
+    <GridPane fx:id="userSearchGrid" styleClass="grid" maxHeight="450" maxWidth="620" translateX="-115" translateY="-600"/>
+    <GridPane fx:id="locationSearchGrid" styleClass="grid" maxHeight="450" maxWidth="620" translateX="-120" translateY="-600"/>
+    <GridPane fx:id="emailSearchGrid" styleClass="grid" maxHeight="450" maxWidth="620" translateX="-120" translateY="-600"/>
+    <GridPane fx:id="logsGrid" styleClass="grid" maxHeight="450" maxWidth="620" translateX="-120" translateY="-600"/>
+    <GridPane fx:id="preferencesGrid" styleClass="grid" maxHeight="450" maxWidth="620" translateX="-120" translateY="-600"/>
 </StackPane>
