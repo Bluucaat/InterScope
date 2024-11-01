@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.image.Image?>
 
-<StackPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.unideb.interscope.InterscopeController"
+<StackPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.unideb.interscope.controller.InterScopeController"
            fx:id="rootPane" style="-fx-background-color: #111016;" prefWidth="888" prefHeight="500">
 
     <HBox alignment="CENTER" HBox.hgrow="ALWAYS">

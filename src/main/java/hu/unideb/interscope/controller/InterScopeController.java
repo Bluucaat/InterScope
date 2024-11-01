@@ -1,4 +1,4 @@
-package hu.unideb.interscope;
+package hu.unideb.interscope.controller;
 
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
@@ -15,7 +15,7 @@ import javafx.util.Duration;
 import javafx.animation.ScaleTransition;
 import javafx.scene.Node;
 
-public class InterscopeController {
+public class InterScopeController {
     private enum AppPart {
         MAIN_MENU, SIDE_MENU
     }

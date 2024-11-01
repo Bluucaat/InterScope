@@ -36,6 +36,17 @@
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>com.googlecode.json-simple</groupId>
+            <artifactId>json-simple</artifactId>
+            <version>1.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.34</version>
+            <scope>provided</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -57,7 +68,7 @@
                     <execution>
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>hu.unideb.interscope/hu.unideb.interscope.InterscopeApplication</mainClass>
+                            <mainClass>hu.unideb.interscope/hu.unideb.interscope.InterScopeLauncher</mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>
                             <jlinkImageName>app</jlinkImageName>
