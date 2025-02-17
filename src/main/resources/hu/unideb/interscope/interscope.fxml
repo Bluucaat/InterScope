@@ -31,7 +31,7 @@
                                 <Image url="@/userLogo.png"/>
                             </image>
                         </ImageView>
-                        <Label text="user search" styleClass="button-text"/>
+                        <Label text="sherlock" styleClass="button-text"/>
                     </VBox>
                 </graphic>
             </Button>
@@ -47,7 +47,7 @@
                                 <Image url="@/locationLogo.png"/>
                             </image>
                         </ImageView>
-                        <Label text="location search" styleClass="button-text"/>
+                        <Label text="theHarvester" styleClass="button-text"/>
                     </VBox>
                 </graphic>
             </Button>
@@ -139,9 +139,9 @@
                 onMouseExited="#handleLogoHover"/>
     </AnchorPane>
 
-    <GridPane fx:id="userSearchGrid" styleClass="grid" maxHeight="450" maxWidth="620" translateX="-115" translateY="-600"/>
-    <GridPane fx:id="locationSearchGrid" styleClass="grid" maxHeight="450" maxWidth="620" translateX="-120" translateY="-600"/>
-    <GridPane fx:id="emailSearchGrid" styleClass="grid" maxHeight="450" maxWidth="620" translateX="-120" translateY="-600"/>
-    <GridPane fx:id="logsGrid" styleClass="grid" maxHeight="450" maxWidth="620" translateX="-120" translateY="-600"/>
-    <GridPane fx:id="preferencesGrid" styleClass="grid" maxHeight="450" maxWidth="620" translateX="-120" translateY="-600"/>
+    <fx:include fx:id="locationSearchGrid" source="location_search.fxml"/>
+    <fx:include fx:id="emailSearchGrid" source="email_search.fxml"/>
+    <fx:include fx:id="logsGrid" source="logs.fxml"/>
+    <fx:include fx:id="userSearchGrid" source="user_search.fxml"/>
+    <fx:include fx:id="preferencesGrid" source="preferences.fxml"/>
 </StackPane>

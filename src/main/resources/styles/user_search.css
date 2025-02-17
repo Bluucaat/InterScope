@@ -1,0 +1,38 @@
+.radio-button {
+    -fx-text-fill: white;
+}
+
+.radio-button .radio {
+    -fx-background-color: #2b2b2b;
+    -fx-border-color: #646464;
+    -fx-border-radius: 100%;
+}
+
+.radio-button:selected .radio {
+    -fx-border-color: #365880;
+}
+
+.radio-button .dot {
+    -fx-background-color: transparent;
+    -fx-padding: 0.3em;
+}
+
+.radio-button:selected .dot {
+    -fx-background-color: #365880;
+}
+
+.search-button{
+    -fx-border-radius: 20;
+}
+
+.text-field{
+    -fx-border-radius: 1.5em;
+}
+
+.results-table{
+}
+
+* {
+    -fx-font-family: 'Julius Sans One';
+    -fx-font-size: 1.1em;
+}
