@@ -6,7 +6,6 @@ import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.beans.property.SimpleStringProperty;
 
 import java.io.BufferedReader;
@@ -56,7 +55,6 @@ public class UserSearchController {
         searchButton.setDisable(true);
         sfwRadio.setDisable(true);
         nsfwRadio.setDisable(true);
-
         searchResults.clear();
 
         Task<Void> searchTask = new Task<>() {
@@ -78,7 +76,7 @@ public class UserSearchController {
                     String line;
                     while ((line = reader.readLine()) != null) {
                         String finalLine = line;
-                        Platform.runLater(() -> parseAndPopulateResults(finalLine));
+                        Platform.runLater(() -> parseAndPopulateSherlockResults(finalLine));
                     }
                 }
 
@@ -112,7 +110,7 @@ public class UserSearchController {
         searchThread.start();
     }
 
-    private void parseAndPopulateResults(String line) {
+    private void parseAndPopulateSherlockResults(String line) {
         if (line.trim().isEmpty()) {
             return;
         }

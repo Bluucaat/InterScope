@@ -27,9 +27,7 @@
                 <graphic>
                     <VBox alignment="CENTER" translateY="12" spacing="24">
                         <ImageView fx:id="userLogo" fitWidth="76" preserveRatio="true">
-                            <image>
-                                <Image url="@/userLogo.png"/>
-                            </image>
+                            <Image url="@/userLogo.png"/>
                         </ImageView>
                         <Label text="sherlock" styleClass="button-text"/>
                     </VBox>
@@ -42,10 +40,8 @@
                     onMouseExited="#handleLogoHover">
                 <graphic>
                     <VBox alignment="CENTER" translateY="10" spacing="20">
-                        <ImageView fx:id="locationLogo" fitWidth="80" preserveRatio="true">
-                            <image>
-                                <Image url="@/locationLogo.png"/>
-                            </image>
+                        <ImageView fx:id="globeLogo" fitWidth="80" preserveRatio="true">
+                            <Image url="@/globeLogo.png"/>
                         </ImageView>
                         <Label text="theHarvester" styleClass="button-text"/>
                     </VBox>
@@ -59,9 +55,7 @@
                 <graphic>
                     <VBox alignment="CENTER" translateY="10" spacing="20">
                         <ImageView fx:id="emailLogo" fitWidth="80" preserveRatio="true">
-                            <image>
-                                <Image url="@/emailLogo.png"/>
-                            </image>
+                            <Image url="@/emailLogo.png"/>
                         </ImageView>
                         <Label text="email search" styleClass="button-text"/>
                     </VBox>
@@ -74,9 +68,7 @@
                 <graphic>
                     <VBox alignment="CENTER" translateY="12" spacing="20">
                         <ImageView fx:id="logsLogo" fitWidth="80" preserveRatio="true">
-                            <image>
-                                <Image url="@/logsLogo.png"/>
-                            </image>
+                            <Image url="@/logsLogo.png"/>
                         </ImageView>
                         <Label text="search history" styleClass="button-text"/>
                     </VBox>
@@ -90,9 +82,7 @@
                 <graphic>
                     <VBox alignment="CENTER" translateY="10" spacing="20">
                         <ImageView fx:id="preferencesLogo" fitWidth="80" preserveRatio="true">
-                            <image>
-                                <Image url="@/preferencesLogo.png"/>
-                            </image>
+                            <Image url="@/preferencesLogo.png"/>
                         </ImageView>
                         <Label text="preferences" styleClass="button-text"/>
                     </VBox>
@@ -106,9 +96,7 @@
                 <graphic>
                     <VBox alignment="CENTER" translateY="13" spacing="23">
                         <ImageView fx:id="exitLogo" fitWidth="75" preserveRatio="true">
-                            <image>
-                                <Image url="@/exitLogo.png"/>
-                            </image>
+                            <Image url="@/exitLogo.png"/>
                         </ImageView>
                         <Label text="close app" styleClass="button-text"/>
                     </VBox>
@@ -122,9 +110,7 @@
                 <Insets top="30" left="25"/>
             </padding>
             <ImageView fx:id="appLogo" fitWidth="170" preserveRatio="true">
-                <image>
-                    <Image url="@/MenuLogo.png"/>
-                </image>
+                <Image url="@/MenuLogo.png"/>
             </ImageView>
             <Label fx:id="title" text="INTERSCOPE" styleClass="menu-title"/>
             <Text fx:id="description" wrappingWidth="160" styleClass="description-text"
@@ -139,9 +125,9 @@
                 onMouseExited="#handleLogoHover"/>
     </AnchorPane>
 
-    <fx:include fx:id="locationSearchGrid" source="location_search.fxml"/>
+    <fx:include fx:id="locationSearchGrid" source="theHarvester.fxml"/>
     <fx:include fx:id="emailSearchGrid" source="email_search.fxml"/>
     <fx:include fx:id="logsGrid" source="logs.fxml"/>
-    <fx:include fx:id="userSearchGrid" source="user_search.fxml"/>
+    <fx:include fx:id="userSearchGrid" source="sherlock.fxml"/>
     <fx:include fx:id="preferencesGrid" source="preferences.fxml"/>
 </StackPane>
