@@ -1,9 +1,10 @@
 package hu.unideb.interscope.controller;
 
-import javafx.animation.TranslateTransition;
 import javafx.animation.ScaleTransition;
+import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
@@ -13,36 +14,49 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
-import javafx.scene.Node;
 
-public class InterScopeController {
+public class NavigationController {
     private enum AppPart {
         MAIN_MENU, SIDE_MENU
     }
 
-    @FXML private Button userSearchButton;
-    @FXML private Button locationSearchButton;
-    @FXML private Button emailSearchButton;
-    @FXML private Button logsButton;
-    @FXML private Button backButton;
-    @FXML private Button settingsButton;
-    @FXML private Button exitButton;
+    @FXML
+    private Button userSearchButton;
+    @FXML
+    private Button locationSearchButton;
+    @FXML
+    private Button emailSearchButton;
+    @FXML
+    private Button logsButton;
+    @FXML
+    private Button backButton;
+    @FXML
+    private Button settingsButton;
+    @FXML
+    private Button exitButton;
 
-    @FXML private GridPane mainGrid;
-    @FXML private GridPane userSearchGrid;
-    @FXML private GridPane locationSearchGrid;
-    @FXML private GridPane emailSearchGrid;
-    @FXML private GridPane logsGrid;
-    @FXML private GridPane preferencesGrid;
+    @FXML
+    private GridPane mainGrid;
+    @FXML
+    private GridPane userSearchGrid;
+    @FXML
+    private GridPane locationSearchGrid;
+    @FXML
+    private GridPane emailSearchGrid;
+    @FXML
+    private GridPane logsGrid;
+    @FXML
+    private GridPane preferencesGrid;
     private GridPane activeGrid;
 
-    @FXML private Label title;
-    @FXML private Text description;
+    @FXML
+    private Label title;
+    @FXML
+    private Text description;
 
     @FXML
     public void initialize() {
         backButton.setTranslateY(100);
-        backButton.setTranslateX(mainGrid.getWidth() - backButton.getWidth() - 20);
         activeGrid = mainGrid;
         Font.loadFont(getClass().getResourceAsStream("/fonts/JuliusSansOne.ttf"), 18);
     }
@@ -140,7 +154,7 @@ public class InterScopeController {
 
     private void slideSideGrid(GridPane gridPane, boolean slideOut) {
         TranslateTransition transition = new TranslateTransition(Duration.seconds(0.3), gridPane);
-        transition.setToY(slideOut ? -mainGrid.getTranslateY() : mainGrid.getTranslateY());
+        transition.setToY(slideOut ? -mainGrid.getTranslateY() - 50 : mainGrid.getTranslateY());
         transition.play();
     }
 

@@ -1,80 +1,65 @@
-.grid {
-    -fx-background-color: #1B1B28;
-    -fx-font-family: "JetBrains Mono";
+.text-field, .search-button {
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+    -fx-pref-height: 35;
 }
 
 .text-field {
-    -fx-background-color: #3c3f41;
+    -fx-background-color: #8D8D93;
     -fx-text-fill: #ffffff;
     -fx-prompt-text-fill: #808080;
-    -fx-background-radius: 3px;
     -fx-border-color: #646464;
-    -fx-border-radius: 3px;
     -fx-padding: 5px;
-    -fx-font-family: "JetBrains Mono";
-}
-
-.text-field:focused {
-    -fx-border-color: #3d6185;
+    -fx-pref-width: 400;
 }
 
 .search-button {
-    -fx-background-color: #365880;
+    -fx-background-color: #111016;
     -fx-text-fill: white;
-    -fx-background-radius: 3px;
-    -fx-padding: 5px 15px;
-    -fx-font-family: "JetBrains Mono";
+    -fx-font-size: 16px;
+    -fx-font-family: 'Julius Sans One';
+    -fx-pref-width: 100;
 }
 
-.button-styled:hover {
-    -fx-background-color: #4c708c;
-}
-
-.button-styled:pressed {
-    -fx-background-color: #2d4966;
+.search-button:hover {
+    -fx-background-color: #47435F;
 }
 
 .table-view {
     -fx-background-color: #2b2b2b;
-    -fx-table-cell-border-color: transparent;
-    -fx-min-width: 580px;
-    -fx-max-width: 580px;
-    -fx-font-family: "JetBrains Mono";
+    -fx-pref-width: 750px;
+    -fx-pref-height: 500px;
     -fx-border-color: #3c3f41;
-    -fx-border-radius: 3px;
-    -fx-background-radius: 3px;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+    -fx-background-insets: 0;
+}
+
+.table-view .column-header, .table-view .column-header-background {
+    -fx-background-color: #323232;
+}
+
+.table-view .column-header {
+    -fx-border-width: 0 1px 1px 0;
+    -fx-border-color: #3c3f41;
+    -fx-pref-height: 45px;
 }
 
 .table-view .column-header .label {
     -fx-text-fill: white;
     -fx-font-weight: bold;
-    -fx-font-family: "JetBrains Mono";
     -fx-padding: 10px 5px;
-}
-
-.table-view .column-header {
-    -fx-background-color: #323232;
-    -fx-border-width: 0 1px 1px 0;
-    -fx-border-color: #3c3f41;
-}
-
-.table-view .column-header-background {
-    -fx-background-color: #323232;
-    -fx-border-width: 0 0 1px 0;
-    -fx-border-color: #3c3f41;
 }
 
 .table-row-cell {
     -fx-background-color: #2b2b2b;
-    -fx-table-cell-border-color: transparent;
-    -fx-border-width: 0;
 }
 
 .table-row-cell:odd {
     -fx-background-color: #2d2d2d;
 }
 
-.table-row-cell:selected {
+.table-row-cell:selected, .table-row-cell:filled:selected:hover {
     -fx-background-color: #365880;
 }
 
@@ -82,74 +67,39 @@
     -fx-text-fill: white;
     -fx-alignment: center-left;
     -fx-padding: 8px 10px;
-    -fx-border-color: transparent;
 }
 
-.table-view .scroll-bar:vertical,
-.table-view .scroll-bar:horizontal {
+.table-view .scroll-bar {
     -fx-background-color: #2b2b2b;
     -fx-pref-width: 12px;
-    -fx-pref-height: 12px;
-    -fx-padding: 2px;
 }
 
-.table-view .scroll-bar:vertical .thumb,
-.table-view .scroll-bar:horizontal .thumb {
+.table-view .scroll-bar .thumb {
     -fx-background-color: #4c4c4c;
     -fx-background-radius: 6px;
 }
 
-.table-view .scroll-bar:vertical .thumb:hover,
-.table-view .scroll-bar:horizontal .thumb:hover {
+.table-view .scroll-bar .thumb:hover {
     -fx-background-color: #5c5c5c;
-}
-
-.table-view .scroll-bar .increment-arrow,
-.table-view .scroll-bar .decrement-arrow,
-.table-view .scroll-bar .increment-button,
-.table-view .scroll-bar .decrement-button {
-    -fx-padding: 0;
-    -fx-background-color: transparent;
-}
-
-.table-view .table-row-cell:drag-detected,
-.table-view .table-row-cell:selected:drag-detected {
-    -fx-background-color: inherit;
-}
-
-.table-view .table-row-cell:filled:hover {
-    -fx-background-color: #323232;
-}
-
-.table-view .table-row-cell:filled:selected:hover {
-    -fx-background-color: #365880;
-}
-
-.table-view .column-header:drag-detected,
-.table-view .column-header:selected:drag-detected {
-    -fx-background-color: inherit;
 }
 
 .radio-button {
     -fx-text-fill: white;
-    -fx-font-family: "JetBrains Mono";
+    -fx-padding: 5;
 }
 
 .radio-button .radio {
-    -fx-background-color: #2b2b2b;
-    -fx-border-color: #646464;
-    -fx-border-radius: 100%;
-}
-
-.radio-button:selected .radio {
-    -fx-border-color: #365880;
-}
-
-.radio-button .dot {
-    -fx-background-color: transparent;
-    -fx-padding: 4px;
+    -fx-background-color: #8D8D93;
 }
 
 .radio-button:selected .dot {
-    -fx-background-color: #365880;
-} 
+    -fx-background-color: black;
+}
+
+#siteColumn {
+    -fx-pref-width: 250px;
+}
+
+#linkColumn {
+    -fx-pref-width: 500px;
+}

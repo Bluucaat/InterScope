@@ -12,8 +12,8 @@ public class InterScopeLauncher extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("interscope.fxml")));
-        Scene scene = new Scene(root, 888, 500);
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/interscope.fxml")));
+        Scene scene = new Scene(root);
         scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/styles/menu.css")).toExternalForm());
         scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/styles/user_search.css")).toExternalForm());
 

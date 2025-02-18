@@ -1,10 +1,10 @@
 .big-button {
     -fx-background-color: #1B1B28;
     -fx-text-fill: white;
-    -fx-font-size: 16px;
+    -fx-font-size: 18px;
     -fx-font-family: 'Julius Sans One';
-    -fx-border-radius: 10px;
-    -fx-background-radius: 10px;
+    -fx-border-radius: 15px;
+    -fx-background-radius: 15px;
 }
 
 .big-button:hover {
@@ -17,12 +17,17 @@
 
 .button-text{
     -fx-text-fill: white;
-    fx-font-size: 12;
+}
+
+.back-button {
+    -fx-font-size: 16px;
+    -fx-pref-width: 100px;
+    -fx-pref-height: 80px;
 }
 
 .menu-title {
     -fx-text-fill: #FFFFFF;
-    -fx-font-size: 24px;
+    -fx-font-size: 30px;
     -fx-font-family: 'Julius Sans One';
     -fx-text-alignment: center;
     -fx-padding: 10 0 40 0;
@@ -30,13 +35,13 @@
 
 .description-text {
     -fx-fill: #CAC7C7;
-    -fx-font-size: 12px;
+    -fx-font-size: 16px;
     -fx-text-alignment: center;
     -fx-font-family: 'Julius Sans One';
 }
 .grid {
-    -fx-padding: 0 0 0 40;
     -fx-background-color: #1B1B28;
-    -fx-border-radius: 10px;
-    -fx-background-radius: 10px;
+    -fx-border-radius: 15px;
+    -fx-background-radius: 15px;
+    -fx-alignment: CENTER;
 }

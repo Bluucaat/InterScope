@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<GridPane xmlns:fx="http://javafx.com/fxml/1"
+          fx:id="userSearchGrid"
+          styleClass="grid"
+          maxHeight="650"
+          maxWidth="850"
+          translateX="-140"
+          translateY="-850"
+          fx:controller="hu.unideb.interscope.controller.UserSearchController">
+
+    <VBox>
+        <HBox spacing="20"
+              GridPane.rowIndex="0"
+              GridPane.columnIndex="0"
+              GridPane.halignment="CENTER"
+              alignment="TOP_CENTER">
+
+            <ImageView fitWidth="60" preserveRatio="true">
+                <Image url="@/userLogo.png"/>
+            </ImageView>
+
+            <TextField fx:id="usernameField"
+                       promptText="Enter a username"
+                       prefWidth="300"
+                       styleClass="text-field"/>
+            <Button fx:id="searchButton"
+                    text="Search"
+                    styleClass="search-button"/>
+            <VBox>
+                <fx:define>
+                    <ToggleGroup fx:id="searchMode"/>
+                </fx:define>
+                <RadioButton fx:id="sfwRadio"
+                             text="SFW"
+                             selected="true"
+                             toggleGroup="$searchMode"
+                             styleClass="radio-button"/>
+                <RadioButton fx:id="nsfwRadio"
+                             text="NSFW"
+                             toggleGroup="$searchMode"
+                             styleClass="radio-button"/>
+            </VBox>
+
+        </HBox>
+
+
+        <TableView fx:id="resultsTable"
+                   GridPane.rowIndex="1"
+                   GridPane.columnIndex="0"
+                   GridPane.halignment="LEFT">
+            <columns>
+                <TableColumn fx:id="siteColumn"
+                             text="Site"
+                             prefWidth="200"
+                             reorderable="false"/>
+                <TableColumn fx:id="linkColumn"
+                             text="Link"
+                             prefWidth="250"
+                             reorderable="false"/>
+            </columns>
+            <columnResizePolicy>
+                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+            </columnResizePolicy>
+        </TableView>
+    </VBox>
+</GridPane>

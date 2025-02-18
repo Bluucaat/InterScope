@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.layout.GridPane?>
-
 <GridPane xmlns:fx="http://javafx.com/fxml/1" fx:id="logsGrid" styleClass="grid"
-          maxHeight="450" maxWidth="620" translateX="-115" translateY="-600">
+          maxHeight="650"
+          maxWidth="850"
+          translateX="-150"
+          translateY="-850">
 </GridPane>

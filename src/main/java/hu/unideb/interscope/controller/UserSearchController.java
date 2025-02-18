@@ -1,12 +1,12 @@
 package hu.unideb.interscope.controller;
 
 import javafx.application.Platform;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.beans.property.SimpleStringProperty;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
