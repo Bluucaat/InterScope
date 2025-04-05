@@ -6,8 +6,8 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Text?>
-<StackPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.unideb.interscope.controller.NavigationController"
-           fx:id="rootPane" style="-fx-background-color: #111016;" prefWidth="1200" prefHeight="675">
+<StackPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.unideb.interscope.controller.MenuController"
+           style="-fx-background-color: #111016;" prefWidth="1200" prefHeight="675">
 
     <HBox alignment="CENTER" HBox.hgrow="ALWAYS">
         <GridPane alignment="CENTER" fx:id="mainGrid" hgap="60" vgap="90">
@@ -15,11 +15,11 @@
                 <Insets right="40"/>
             </padding>
             <Button fx:id="userSearchButton" prefWidth="240" prefHeight="240" styleClass="big-button"
-                    onAction="#handleMenuButtonClick" onMouseEntered="#handleLogoHover"
-                    onMouseExited="#handleLogoHover">
+                    onAction="#handleMenuButtonClick" onMouseEntered="#handleButtonHover"
+                    onMouseExited="#handleButtonHover">
                 <graphic>
                     <VBox alignment="CENTER" translateY="12" spacing="24">
-                        <ImageView fx:id="userLogo" fitWidth="120" preserveRatio="true">
+                        <ImageView fitWidth="120" preserveRatio="true">
                             <Image url="@/userLogo.png"/>
                         </ImageView>
                         <Label text="sherlock" styleClass="button-text"/>
@@ -29,11 +29,11 @@
 
             <Button fx:id="locationSearchButton" prefWidth="240" prefHeight="240" styleClass="big-button"
                     GridPane.columnIndex="1"
-                    onAction="#handleMenuButtonClick" onMouseEntered="#handleLogoHover"
-                    onMouseExited="#handleLogoHover">
+                    onAction="#handleMenuButtonClick" onMouseEntered="#handleButtonHover"
+                    onMouseExited="#handleButtonHover">
                 <graphic>
                     <VBox alignment="CENTER" translateY="10" spacing="32">
-                        <ImageView fx:id="globeLogo" fitWidth="120" preserveRatio="true">
+                        <ImageView fitWidth="120" preserveRatio="true">
                             <Image url="@/globeLogo.png"/>
                         </ImageView>
                         <Label text="theHarvester" styleClass="button-text"/>
@@ -43,11 +43,11 @@
 
             <Button fx:id="emailSearchButton" prefWidth="240" prefHeight="240" styleClass="big-button"
                     GridPane.columnIndex="2"
-                    onAction="#handleMenuButtonClick" onMouseEntered="#handleLogoHover"
-                    onMouseExited="#handleLogoHover">
+                    onAction="#handleMenuButtonClick" onMouseEntered="#handleButtonHover"
+                    onMouseExited="#handleButtonHover">
                 <graphic>
                     <VBox alignment="CENTER" translateY="10" spacing="32">
-                        <ImageView fx:id="emailLogo" fitWidth="120" preserveRatio="true">
+                        <ImageView fitWidth="120" preserveRatio="true">
                             <Image url="@/emailLogo.png"/>
                         </ImageView>
                         <Label text="email search" styleClass="button-text"/>
@@ -56,11 +56,11 @@
             </Button>
 
             <Button fx:id="logsButton" prefWidth="240" prefHeight="240" styleClass="big-button" GridPane.rowIndex="1"
-                    onAction="#handleMenuButtonClick" onMouseEntered="#handleLogoHover"
-                    onMouseExited="#handleLogoHover">
+                    onAction="#handleMenuButtonClick" onMouseEntered="#handleButtonHover"
+                    onMouseExited="#handleButtonHover">
                 <graphic>
                     <VBox alignment="CENTER" translateY="12" spacing="32">
-                        <ImageView fx:id="logsLogo" fitWidth="120" preserveRatio="true">
+                        <ImageView fitWidth="120" preserveRatio="true">
                             <Image url="@/logsLogo.png"/>
                         </ImageView>
                         <Label text="search history" styleClass="button-text"/>
@@ -70,25 +70,25 @@
 
             <Button fx:id="settingsButton" prefWidth="240" prefHeight="240" styleClass="big-button"
                     GridPane.columnIndex="1" GridPane.rowIndex="1"
-                    onAction="#handleMenuButtonClick" onMouseEntered="#handleLogoHover"
-                    onMouseExited="#handleLogoHover">
+                    onAction="#handleMenuButtonClick" onMouseEntered="#handleButtonHover"
+                    onMouseExited="#handleButtonHover">
                 <graphic>
                     <VBox alignment="CENTER" translateY="10" spacing="32">
-                        <ImageView fx:id="preferencesLogo" fitWidth="120" preserveRatio="true">
-                            <Image url="@/preferencesLogo.png"/>
+                        <ImageView fitWidth="120" preserveRatio="true">
+                            <Image url="@/informationLogo.png"/>
                         </ImageView>
-                        <Label text="preferences" styleClass="button-text"/>
+                        <Label text="credits" styleClass="button-text"/>
                     </VBox>
                 </graphic>
             </Button>
 
             <Button fx:id="exitButton" prefWidth="240" prefHeight="240" styleClass="big-button" GridPane.columnIndex="2"
                     GridPane.rowIndex="1"
-                    onAction="#handleMenuButtonClick" onMouseEntered="#handleLogoHover"
-                    onMouseExited="#handleLogoHover">
+                    onAction="#handleMenuButtonClick" onMouseEntered="#handleButtonHover"
+                    onMouseExited="#handleButtonHover">
                 <graphic>
                     <VBox alignment="CENTER" translateY="13" spacing="23">
-                        <ImageView fx:id="exitLogo" fitWidth="120" preserveRatio="true">
+                        <ImageView fitWidth="120" preserveRatio="true">
                             <Image url="@/exitLogo.png"/>
                         </ImageView>
                         <Label text="close app" styleClass="button-text"/>
@@ -117,14 +117,15 @@
 
     <AnchorPane pickOnBounds="false" translateX="-40">
         <Button fx:id="backButton" text="Back" AnchorPane.rightAnchor="60" AnchorPane.bottomAnchor="30"
-                prefHeight="50" prefWidth="100"
-                styleClass="big-button" onAction="#handleBackButtonClick" onMouseEntered="#handleLogoHover"
-                onMouseExited="#handleLogoHover"/>
+                prefHeight="30" prefWidth="80"
+                styleClass="big-button" onAction="#handleBackButtonClick" onMouseEntered="#handleButtonHover"
+                onMouseExited="#handleButtonHover"/>
     </AnchorPane>
 
     <fx:include fx:id="locationSearchGrid" source="theHarvester.fxml"/>
     <fx:include fx:id="emailSearchGrid" source="email_search.fxml"/>
     <fx:include fx:id="logsGrid" source="logs.fxml"/>
     <fx:include fx:id="userSearchGrid" source="sherlock.fxml"/>
-    <fx:include fx:id="preferencesGrid" source="preferences.fxml"/>
+    <fx:include fx:id="creditsGrid" source="credits.fxml"/>
+    <fx:include fx:id="theHarvesterSettings" source="theHarvesterSettings.fxml"/>
 </StackPane>

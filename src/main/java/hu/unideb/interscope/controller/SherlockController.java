@@ -13,27 +13,14 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserSearchController {
-    @FXML
-    private TextField usernameField;
-
-    @FXML
-    private Button searchButton;
-
-    @FXML
-    private TableView<SearchResult> resultsTable;
-
-    @FXML
-    private TableColumn<SearchResult, String> siteColumn;
-
-    @FXML
-    private TableColumn<SearchResult, String> linkColumn;
-
-    @FXML
-    private RadioButton sfwRadio;
-
-    @FXML
-    private RadioButton nsfwRadio;
+public class SherlockController {
+    @FXML private TextField usernameField;
+    @FXML private Button searchButton;
+    @FXML private TableView<SearchResult> resultsTable;
+    @FXML private TableColumn<SearchResult, String> siteColumn;
+    @FXML private TableColumn<SearchResult, String> linkColumn;
+    @FXML private RadioButton sfwRadio;
+    @FXML private RadioButton nsfwRadio;
 
     private final ObservableList<SearchResult> searchResults = FXCollections.observableArrayList();
 

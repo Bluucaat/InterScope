@@ -4,23 +4,23 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
 <GridPane xmlns:fx="http://javafx.com/fxml/1"
-          fx:id="userSearchGrid"
+          fx:id="sherlockGrid"
           styleClass="grid"
           maxHeight="650"
           maxWidth="850"
-          translateX="-140"
+          translateX="-150"
           translateY="-850"
-          fx:controller="hu.unideb.interscope.controller.UserSearchController">
+          fx:controller="hu.unideb.interscope.controller.SherlockController">
 
     <VBox>
-        <HBox spacing="20"
+        <HBox spacing="30"
               GridPane.rowIndex="0"
               GridPane.columnIndex="0"
-              GridPane.halignment="CENTER"
-              alignment="TOP_CENTER">
+              alignment="CENTER">
 
-            <ImageView fitWidth="60" preserveRatio="true">
+            <ImageView fitWidth="70" preserveRatio="true">
                 <Image url="@/userLogo.png"/>
             </ImageView>
 
@@ -45,7 +45,9 @@
                              toggleGroup="$searchMode"
                              styleClass="radio-button"/>
             </VBox>
-
+            <padding>
+                <Insets bottom="30"/>
+            </padding>
         </HBox>
 
 

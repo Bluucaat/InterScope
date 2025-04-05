@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Text?>
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
+
+<?import javafx.scene.layout.ColumnConstraints?>
+<GridPane xmlns:fx="http://javafx.com/fxml/1"
+          fx:id="settingsPane"
+          styleClass="settings-grid"
+          alignment="CENTER"
+          translateY="-810"
+          maxWidth="750"
+          maxHeight="500"
+          stylesheets="@../styles/theHarvesterSettings.css"
+          fx:controller="hu.unideb.interscope.controller.TheHarvesterSettingsController">
+
+    <VBox spacing="40" alignment="CENTER" styleClass="main-container">
+        
+        <GridPane hgap="30" vgap="40" alignment="CENTER">
+            <columnConstraints>
+                <ColumnConstraints minWidth="200" halignment="LEFT" />
+                <ColumnConstraints minWidth="300" />
+            </columnConstraints>
+            
+            <Text GridPane.rowIndex="0" GridPane.columnIndex="0" styleClass="label-text" GridPane.halignment="LEFT">DATA SOURCE</Text>
+            <ComboBox fx:id="dataSourceComboBox" GridPane.rowIndex="0" GridPane.columnIndex="1" prefWidth="300" styleClass="input-field" value="all">
+                <items>
+                    <FXCollections fx:factory="observableArrayList">
+                        <String fx:value="all" />
+                        <String fx:value="anubis" />
+                        <String fx:value="baidu" />
+                        <String fx:value="bevigil" />
+                        <String fx:value="binaryedge" />
+                        <String fx:value="bufferoverun" />
+                        <String fx:value="bing" />
+                        <String fx:value="bingapi" />
+                        <String fx:value="crtsh" />
+                        <String fx:value="dnsdumpster" />
+                        <String fx:value="duckduckgo" />
+                        <String fx:value="github" />
+                        <String fx:value="hunter" />
+                        <String fx:value="intelx" />
+                        <String fx:value="linkedin" />
+                        <String fx:value="otx" />
+                        <String fx:value="urlscan" />
+                        <String fx:value="threatminer" />
+                        <String fx:value="yahoo" />
+                    </FXCollections>
+                </items>
+            </ComboBox>
+            
+            <Text GridPane.rowIndex="1" GridPane.columnIndex="0" styleClass="label-text" GridPane.halignment="LEFT">START</Text>
+            <TextField fx:id="startTextField" GridPane.rowIndex="1" GridPane.columnIndex="1" prefWidth="300" styleClass="input-field" text="0" />
+            
+            <Text GridPane.rowIndex="2" GridPane.columnIndex="0" styleClass="label-text" GridPane.halignment="LEFT">LIMIT</Text>
+            <ComboBox fx:id="limitComboBox" GridPane.rowIndex="2" GridPane.columnIndex="1" prefWidth="300" styleClass="input-field" value="500">
+                <items>
+                    <FXCollections fx:factory="observableArrayList">
+                        <String fx:value="10" />
+                        <String fx:value="50" />
+                        <String fx:value="100" />
+                        <String fx:value="200" />
+                        <String fx:value="500" />
+                        <String fx:value="1000" />
+                        <String fx:value="2000" />
+                    </FXCollections>
+                </items>
+            </ComboBox>
+            
+            <Text GridPane.rowIndex="3" GridPane.columnIndex="0" styleClass="label-text" GridPane.halignment="LEFT">USE SHODAN</Text>
+            <HBox GridPane.rowIndex="3" GridPane.columnIndex="1" spacing="20" alignment="CENTER_LEFT" styleClass="radio-container">
+                <fx:define>
+                    <ToggleGroup fx:id="shodanToggleGroup"/>
+                </fx:define>
+                <RadioButton fx:id="shodanOn" styleClass="radio-button" text="ON" toggleGroup="$shodanToggleGroup" />
+                <RadioButton fx:id="shodanOff" styleClass="radio-button" text="OFF" selected="true" toggleGroup="$shodanToggleGroup" />
+            </HBox>
+        </GridPane>
+        
+        <HBox spacing="20" alignment="CENTER">
+            <Button fx:id="cancelButton" text="CANCEL" styleClass="cancel-button" prefWidth="150" prefHeight="40" />
+            <Button fx:id="saveButton" text="SAVE" styleClass="save-button" prefWidth="150" prefHeight="40" />
+        </HBox>
+    </VBox>
+</GridPane>

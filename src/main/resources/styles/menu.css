@@ -1,10 +1,13 @@
+.root {
+    -fx-font-family: 'Julius Sans One';
+}
 .big-button {
     -fx-background-color: #1B1B28;
     -fx-text-fill: white;
     -fx-font-size: 18px;
-    -fx-font-family: 'Julius Sans One';
     -fx-border-radius: 15px;
     -fx-background-radius: 15px;
+    -fx-cursor: hand;
 }
 
 .big-button:hover {
@@ -26,9 +29,8 @@
 }
 
 .menu-title {
-    -fx-text-fill: #FFFFFF;
+    -fx-text-fill: white;
     -fx-font-size: 30px;
-    -fx-font-family: 'Julius Sans One';
     -fx-text-alignment: center;
     -fx-padding: 10 0 40 0;
 }
@@ -37,7 +39,6 @@
     -fx-fill: #CAC7C7;
     -fx-font-size: 16px;
     -fx-text-alignment: center;
-    -fx-font-family: 'Julius Sans One';
 }
 .grid {
     -fx-background-color: #1B1B28;

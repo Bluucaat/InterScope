@@ -1,5 +1,6 @@
 package hu.unideb.interscope.controller;
 
+import hu.unideb.interscope.utils.AnimationHelper;
 import javafx.animation.ScaleTransition;
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
@@ -14,8 +15,13 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
+import lombok.Getter;
 
-public class NavigationController {
+public class MenuController {
+
+
+    public GridPane theHarvesterSettings;
+
     private enum AppPart {
         MAIN_MENU, SIDE_MENU
     }
@@ -46,9 +52,10 @@ public class NavigationController {
     @FXML
     private GridPane logsGrid;
     @FXML
-    private GridPane preferencesGrid;
+    private GridPane creditsGrid;
+    @Getter
+    @FXML
     private GridPane activeGrid;
-
     @FXML
     private Label title;
     @FXML
@@ -65,14 +72,14 @@ public class NavigationController {
     public void handleMenuButtonClick(ActionEvent event) {
         if (event.getSource() == userSearchButton) {
             swapGrids(userSearchGrid, AppPart.MAIN_MENU);
-            title.setText("Username\nSearch");
+            title.setText("Sherlock");
             description.setText("The username search looks across a lot of famous websites. Please be aware that the searches " +
                     "are conducted using your machine's resources and from your IP address, so search accordingly.");
         } else if (event.getSource() == locationSearchButton) {
             swapGrids(locationSearchGrid, AppPart.MAIN_MENU);
-            title.setText("Location\nSearch");
-            description.setText("The Location search uses AI to analyze an image uploaded to the application and attempts to approximate where the photo was taken. " +
-                    "In the absence of GPS EXIF data, the system provides GPS estimation.");
+            title.setText("theHarvester");
+            description.setText("a Python based tool used in reconnaissance to gather e-mail addresses and subdomains related to a target, " +
+                    "enabling the identification of potential network usernames for further security testing.");
         } else if (event.getSource() == emailSearchButton) {
             swapGrids(emailSearchGrid, AppPart.MAIN_MENU);
             title.setText("Email Search");
@@ -84,7 +91,7 @@ public class NavigationController {
             description.setText("Here you can find your previous searches. Maybe I'll also implement a way to " +
                     "re-do the searches with the same parameters, though it's unlikely.");
         } else if (event.getSource() == settingsButton) {
-            swapGrids(preferencesGrid, AppPart.MAIN_MENU);
+            swapGrids(creditsGrid, AppPart.MAIN_MENU);
         } else if (event.getSource() == exitButton) {
             System.exit(0);
         }
@@ -100,7 +107,7 @@ public class NavigationController {
     }
 
     @FXML
-    public void handleLogoHover(MouseEvent event) {
+    public void handleButtonHover(MouseEvent event) {
         Button source = (Button) event.getSource();
         ImageView imageView = null;
 
@@ -134,33 +141,22 @@ public class NavigationController {
 
     private void swapGrids(GridPane grid, AppPart appPart) {
         if (appPart == AppPart.MAIN_MENU) {
-            slideMainGrid(true);
-            slideSideGrid(grid, false);
+            AnimationHelper.slideGridAbove(mainGrid, true);
+            AnimationHelper.slideGridBelow(grid, false);
             slideBackButton(false);
             activeGrid = grid;
         } else if (appPart == AppPart.SIDE_MENU) {
-            slideSideGrid(grid, true);
-            slideMainGrid(false);
+            AnimationHelper.slideGridBelow(grid, true);
+            AnimationHelper.slideGridAbove(mainGrid, false);
             slideBackButton(true);
             activeGrid = mainGrid;
         }
     }
 
-    private void slideMainGrid(boolean slideOut) {
-        TranslateTransition transition = new TranslateTransition(Duration.seconds(0.3), mainGrid);
-        transition.setByY(slideOut ? 660 : -660);
-        transition.play();
-    }
-
-    private void slideSideGrid(GridPane gridPane, boolean slideOut) {
-        TranslateTransition transition = new TranslateTransition(Duration.seconds(0.3), gridPane);
-        transition.setToY(slideOut ? -mainGrid.getTranslateY() - 50 : mainGrid.getTranslateY());
-        transition.play();
-    }
-
     private void slideBackButton(boolean slideOut) {
         TranslateTransition transition = new TranslateTransition(Duration.seconds(0.3), backButton);
         transition.setToY(slideOut ? 100 : 5);
+        backButton.setDisable(slideOut);
         transition.play();
     }
 }
