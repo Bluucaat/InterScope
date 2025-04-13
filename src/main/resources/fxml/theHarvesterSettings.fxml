@@ -7,19 +7,19 @@
 <?import javafx.scene.text.Text?>
 <?import javafx.collections.FXCollections?>
 <?import java.lang.String?>
-
 <?import javafx.scene.layout.ColumnConstraints?>
+
 <GridPane xmlns:fx="http://javafx.com/fxml/1"
           fx:id="settingsPane"
           styleClass="settings-grid"
           alignment="CENTER"
-          translateY="-810"
+          translateY="-805"
           maxWidth="750"
           maxHeight="500"
           stylesheets="@../styles/theHarvesterSettings.css"
           fx:controller="hu.unideb.interscope.controller.TheHarvesterSettingsController">
 
-    <VBox spacing="40" alignment="CENTER" styleClass="main-container">
+    <VBox spacing="40" alignment="CENTER">
         
         <GridPane hgap="30" vgap="40" alignment="CENTER">
             <columnConstraints>
@@ -34,17 +34,11 @@
                         <String fx:value="all" />
                         <String fx:value="anubis" />
                         <String fx:value="baidu" />
-                        <String fx:value="bevigil" />
-                        <String fx:value="binaryedge" />
-                        <String fx:value="bufferoverun" />
                         <String fx:value="bing" />
                         <String fx:value="bingapi" />
                         <String fx:value="crtsh" />
                         <String fx:value="dnsdumpster" />
                         <String fx:value="duckduckgo" />
-                        <String fx:value="github" />
-                        <String fx:value="hunter" />
-                        <String fx:value="intelx" />
                         <String fx:value="linkedin" />
                         <String fx:value="otx" />
                         <String fx:value="urlscan" />

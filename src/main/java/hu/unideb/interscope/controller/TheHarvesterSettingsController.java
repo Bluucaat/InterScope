@@ -2,15 +2,14 @@ package hu.unideb.interscope.controller;
 
 import hu.unideb.interscope.utils.AnimationHelper;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import java.util.function.Consumer;
-
-import lombok.Setter;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class TheHarvesterSettingsController {
     @FXML private Button saveButton;
@@ -21,19 +20,17 @@ public class TheHarvesterSettingsController {
     @FXML private ComboBox<String> limitComboBox;
     @FXML private RadioButton shodanOn;
     @FXML private RadioButton shodanOff;
-
-    @Setter
-    private Node originalContent;
+    private static final Logger logger = LoggerFactory.getLogger(TheHarvesterSettingsController.class);
     private Consumer<Settings> onSaveCallback;
 
     @FXML
     public void initialize() {
-        dataSourceComboBox.setValue("all");
+        dataSourceComboBox.setValue("anubis");
         startTextField.setText("0");
         limitComboBox.setValue("500");
         shodanOff.setSelected(true);
 
-        startTextField.textProperty().addListener((observable, oldValue, newValue) -> {
+        startTextField.textProperty().addListener((_, oldValue, newValue) -> {
             newValue = newValue.replaceAll("\\D", "");
             
             // If empty, allow it (will be handled by the next validation)
@@ -54,7 +51,7 @@ public class TheHarvesterSettingsController {
             }
         });
 
-        saveButton.setOnAction(event -> {
+        saveButton.setOnAction(_ -> {
             if (onSaveCallback != null) {
                 Settings settings = new Settings(
                     dataSourceComboBox.getValue(),
@@ -67,14 +64,14 @@ public class TheHarvesterSettingsController {
             returnToMainView();
         });
 
-        cancelButton.setOnAction(event -> returnToMainView());
+        cancelButton.setOnAction(_ -> returnToMainView());
     }
 
     private void returnToMainView() {
         try {
             AnimationHelper.slideGridBelow(settingsPane, true);
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error(e.getMessage(), e);
         }
     }
 

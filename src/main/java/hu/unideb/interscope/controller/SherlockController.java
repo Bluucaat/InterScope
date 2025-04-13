@@ -1,5 +1,6 @@
 package hu.unideb.interscope.controller;
 
+import hu.unideb.interscope.utils.ResultSaver;
 import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -7,7 +8,8 @@ import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
@@ -22,7 +24,10 @@ public class SherlockController {
     @FXML private RadioButton sfwRadio;
     @FXML private RadioButton nsfwRadio;
 
+    private static final Logger logger = LoggerFactory.getLogger(SherlockController.class);
+
     private final ObservableList<SearchResult> searchResults = FXCollections.observableArrayList();
+    private final StringBuilder outputBuffer = new StringBuilder();
 
     @FXML
     public void initialize() {
@@ -43,11 +48,12 @@ public class SherlockController {
         sfwRadio.setDisable(true);
         nsfwRadio.setDisable(true);
         searchResults.clear();
+        outputBuffer.setLength(0);
 
         Task<Void> searchTask = new Task<>() {
             @Override
             protected Void call() throws Exception {
-                List<String> command = new ArrayList<>(List.of("docker", "exec", "interScopeContainer", "sherlock"));
+                List<String> command = new ArrayList<>(List.of("docker", "exec", "interscope-tools", "sherlock"));
 
                 if (nsfwRadio.isSelected()) {
                     command.add("--nsfw");
@@ -63,6 +69,7 @@ public class SherlockController {
                     String line;
                     while ((line = reader.readLine()) != null) {
                         String finalLine = line;
+                        outputBuffer.append(finalLine).append("\n");
                         Platform.runLater(() -> parseAndPopulateSherlockResults(finalLine));
                     }
                 }
@@ -74,17 +81,21 @@ public class SherlockController {
             @Override
             protected void succeeded() {
                 Platform.runLater(() -> {
+                    if (!outputBuffer.isEmpty()) {
+                        ResultSaver.saveResults("Sherlock_" + username, outputBuffer.toString());
+                    }
+                    
                     searchButton.setDisable(false);
                     sfwRadio.setDisable(false);
                     nsfwRadio.setDisable(false);
-
                 });
             }
 
             @Override
             protected void failed() {
                 Platform.runLater(() -> {
-                    System.err.println("Search failed: " + getException().getMessage());
+                    Throwable exception = getException();
+                    logger.error("Search failed: {}", exception.getMessage(), exception);
                     searchButton.setDisable(false);
                     sfwRadio.setDisable(false);
                     nsfwRadio.setDisable(false);

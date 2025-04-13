@@ -6,7 +6,6 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.geometry.Insets?>
 <GridPane xmlns:fx="http://javafx.com/fxml/1"
-          fx:id="sherlockGrid"
           styleClass="grid"
           maxHeight="650"
           maxWidth="850"

@@ -3,6 +3,7 @@ module hu.unideb.interscope {
     requires javafx.fxml;
     requires json.simple;
     requires static lombok;
+    requires org.slf4j;
 
 
     opens hu.unideb.interscope to javafx.fxml;

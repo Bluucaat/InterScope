@@ -1,16 +1,17 @@
 package hu.unideb.interscope.controller;
 
 import hu.unideb.interscope.utils.AnimationHelper;
+import hu.unideb.interscope.utils.ResultSaver;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
@@ -21,45 +22,39 @@ public class TheHarvesterController {
     @FXML private TextField domainNameField;
     @FXML private Button searchButton;
     @FXML private GridPane theHarvesterGrid;
-    @FXML private TextArea resultsTextArea;
+    @FXML private TextArea theHarvesterOutputBox;
 
+    private static final Logger logger = LoggerFactory.getLogger(TheHarvesterController.class);
     private TheHarvesterSettingsController.Settings currentSettings;
     private StringBuilder outputBuffer = new StringBuilder();
 
     @FXML
     public void initialize() {
         currentSettings = new TheHarvesterSettingsController.Settings(
-                "all", "0", "500", false);
-        theHarvesterSettingsButton.setOnAction(event -> {
-            openSettingsWindow();
-        });
+                "anubis", "0", "500", false);
+        theHarvesterSettingsButton.setOnAction(_ -> openSettingsWindow());
 
-        searchButton.setOnAction(event -> performSearch());
+        searchButton.setOnAction(_ -> performSearch());
     }
 
     @FXML
     private void openSettingsWindow() {
         try {
-            Node originalContent = theHarvesterGrid.getChildren().getFirst();
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/theHarvesterSettings.fxml"));
             GridPane settingsPane = loader.load();
 
 
             TheHarvesterSettingsController settingsController = loader.getController();
-            settingsController.setOriginalContent(originalContent);
             settingsController.setSettings(currentSettings);
 
-            settingsController.setOnSave(settings -> {
-                currentSettings = settings;
-            });
+            settingsController.setOnSave(settings -> currentSettings = settings);
 
             theHarvesterGrid.add(settingsPane, 0, 0);
 
             AnimationHelper.slideGridBelow(settingsPane, false);
 
         } catch (Exception e) {
-            System.err.println("Error opening settings: ");
-            e.printStackTrace();
+            logger.error(e.getMessage(), e);
         }
     }
 
@@ -70,7 +65,7 @@ public class TheHarvesterController {
         }
 
         outputBuffer = new StringBuilder();
-        resultsTextArea.clear();
+        theHarvesterOutputBox.clear();
 
         searchButton.setDisable(true);
         domainNameField.setDisable(true);
@@ -99,6 +94,11 @@ public class TheHarvesterController {
             @Override
             protected void succeeded() {
                 Platform.runLater(() -> {
+                    // Save the search results
+                    if (!outputBuffer.isEmpty() && !(outputBuffer.toString().charAt(0) == 'E')){
+                        ResultSaver.saveResults("TheHarvester_" + domainNameField.getText(), outputBuffer.toString());
+                    }
+                    
                     searchButton.setDisable(false);
                     domainNameField.setDisable(false);
                     theHarvesterSettingsButton.setDisable(false);
@@ -123,7 +123,7 @@ public class TheHarvesterController {
     }
 
     private List<String> getStrings(String domainName) {
-        List<String> command = new ArrayList<>(List.of("docker", "exec", "interScopeContainer", "theHarvester"));
+        List<String> command = new ArrayList<>(List.of("docker", "exec", "interscope-tools", "theHarvester"));
 
         if (currentSettings != null) {
             command.add("-b");
@@ -145,8 +145,8 @@ public class TheHarvesterController {
     public void addOutput(String line) {
         if (line != null && !line.trim().isEmpty()) {
             outputBuffer.append(line).append("\n");
-            resultsTextArea.setText(outputBuffer.toString());
-            resultsTextArea.positionCaret(outputBuffer.length());
+            theHarvesterOutputBox.setText(outputBuffer.toString());
+            theHarvesterOutputBox.positionCaret(outputBuffer.length());
         }
     }
 } 

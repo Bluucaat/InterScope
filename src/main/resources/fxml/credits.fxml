@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
 <GridPane xmlns:fx="http://javafx.com/fxml/1" fx:id="creditsGrid" styleClass="grid"
           maxHeight="650"
           maxWidth="850"
           translateX="-150"
           translateY="-850">
+    <VBox spacing="40" alignment="CENTER">
+        <Text>About</Text>
+        <Text wrappingWidth="100">This project was developed by Ribár Krisztián, to allow the use of OSINT tools cross-platform without any prior knowledge of such tools.</Text>
+    </VBox>
 </GridPane>

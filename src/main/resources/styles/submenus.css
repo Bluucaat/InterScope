@@ -11,10 +11,13 @@
 .text-field {
     -fx-background-color: #8D8D93;
     -fx-text-fill: #ffffff;
-    -fx-prompt-text-fill: #808080;
+    -fx-prompt-text-fill: #ffffff;
     -fx-border-color: #646464;
     -fx-padding: 5px;
     -fx-pref-width: 400;
+    -fx-font-family: Arial;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
 }
 
 .search-button {
@@ -105,14 +108,18 @@
     -fx-text-fill: white;
     -fx-padding: 5;
     -fx-cursor: hand;
+    -fx-font-size: 14px;
 }
 
 .radio-button .radio {
-    -fx-background-color: #8D8D93;
+    -fx-background-color: rgba(90, 90, 90, 0.8);
+    -fx-border-color: transparent;
+    -fx-background-radius: 10px;
+    -fx-border-radius: 10px;
 }
 
-.radio-button:selected .dot {
-    -fx-background-color: black;
+.radio-button:selected .radio .dot {
+    -fx-background-color: white;
 }
 
 .table-view .column-header-background .filler {
@@ -136,4 +143,68 @@
     -fx-padding: 0;
     -fx-pref-height: 0;
     -fx-max-height: 0;
+}
+
+.table-view .placeholder .label {
+    -fx-text-fill: white;
+}
+
+/* TextArea Output Styling */
+.harvester-output {
+    -fx-background-color: #111016;
+    -fx-background-radius: 15px;
+    -fx-border-radius: 15px;
+    -fx-text-fill: white;
+    -fx-font-family: monospace;
+    -fx-font-size: 15px;
+    -fx-padding: 0;
+}
+
+.harvester-output .content {
+    -fx-background-color: #111016;
+    -fx-background-radius: 10px;
+}
+
+.harvester-output .scroll-pane {
+    -fx-background-color: transparent;
+}
+
+.harvester-output .scroll-pane .viewport {
+    -fx-background-color: transparent;
+}
+
+.harvester-output .scroll-pane .content {
+    -fx-background-color: #111016;
+}
+
+.harvester-output .scroll-bar:vertical,
+.harvester-output .scroll-bar:horizontal {
+    -fx-background-color: transparent;
+    -fx-background-radius: 0;
+}
+
+.harvester-output .scroll-bar:vertical .thumb,
+.harvester-output .scroll-bar:horizontal .thumb {
+    -fx-background-color: #3a3a3a;
+    -fx-background-radius: 5px;
+}
+
+.harvester-output .scroll-bar:vertical .track,
+.harvester-output .scroll-bar:horizontal .track {
+    -fx-background-color: transparent;
+}
+
+.harvester-output .scroll-bar .increment-button,
+.harvester-output .scroll-bar .decrement-button {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+.harvester-output .scroll-bar .increment-arrow,
+.harvester-output .scroll-bar .decrement-arrow {
+    -fx-background-color: white;
+}
+
+.harvester-output .corner {
+    -fx-background-color: transparent;
 }

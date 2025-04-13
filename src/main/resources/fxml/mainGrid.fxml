@@ -14,7 +14,7 @@
             <padding>
                 <Insets right="40"/>
             </padding>
-            <Button fx:id="userSearchButton" prefWidth="240" prefHeight="240" styleClass="big-button"
+            <Button fx:id="sherlockButton" prefWidth="240" prefHeight="240" styleClass="big-button"
                     onAction="#handleMenuButtonClick" onMouseEntered="#handleButtonHover"
                     onMouseExited="#handleButtonHover">
                 <graphic>
@@ -27,7 +27,7 @@
                 </graphic>
             </Button>
 
-            <Button fx:id="locationSearchButton" prefWidth="240" prefHeight="240" styleClass="big-button"
+            <Button fx:id="theHarvesterButton" prefWidth="240" prefHeight="240" styleClass="big-button"
                     GridPane.columnIndex="1"
                     onAction="#handleMenuButtonClick" onMouseEntered="#handleButtonHover"
                     onMouseExited="#handleButtonHover">
@@ -41,16 +41,16 @@
                 </graphic>
             </Button>
 
-            <Button fx:id="emailSearchButton" prefWidth="240" prefHeight="240" styleClass="big-button"
+            <Button fx:id="spiderFootButton" prefWidth="240" prefHeight="240" styleClass="big-button"
                     GridPane.columnIndex="2"
                     onAction="#handleMenuButtonClick" onMouseEntered="#handleButtonHover"
                     onMouseExited="#handleButtonHover">
                 <graphic>
                     <VBox alignment="CENTER" translateY="10" spacing="32">
                         <ImageView fitWidth="120" preserveRatio="true">
-                            <Image url="@/emailLogo.png"/>
+                            <Image url="@/SpiderFootLogo.png"/>
                         </ImageView>
-                        <Label text="email search" styleClass="button-text"/>
+                        <Label text="spiderfoot" styleClass="button-text"/>
                     </VBox>
                 </graphic>
             </Button>
@@ -68,7 +68,7 @@
                 </graphic>
             </Button>
 
-            <Button fx:id="settingsButton" prefWidth="240" prefHeight="240" styleClass="big-button"
+            <Button fx:id="creditsButton" prefWidth="240" prefHeight="240" styleClass="big-button"
                     GridPane.columnIndex="1" GridPane.rowIndex="1"
                     onAction="#handleMenuButtonClick" onMouseEntered="#handleButtonHover"
                     onMouseExited="#handleButtonHover">
@@ -102,8 +102,8 @@
             <padding>
                 <Insets top="60" left="30"/>
             </padding>
-            <ImageView fx:id="appLogo" fitWidth="220" preserveRatio="true">
-                <Image url="@/MenuLogo.png"/>
+            <ImageView fitWidth="220" preserveRatio="true">
+                <Image url="@/InterScopeMenuLogo.png"/>
             </ImageView>
             <padding>
 
@@ -122,10 +122,10 @@
                 onMouseExited="#handleButtonHover"/>
     </AnchorPane>
 
-    <fx:include fx:id="locationSearchGrid" source="theHarvester.fxml"/>
-    <fx:include fx:id="emailSearchGrid" source="email_search.fxml"/>
-    <fx:include fx:id="logsGrid" source="logs.fxml"/>
-    <fx:include fx:id="userSearchGrid" source="sherlock.fxml"/>
+    <fx:include fx:id="sherlockGrid" source="sherlock.fxml"/>
+    <fx:include fx:id="theHarvesterGrid" source="theHarvester.fxml"/>
+    <fx:include fx:id="spiderfootGrid" source="spiderFoot.fxml"/>
+    <fx:include fx:id="previousSearchesGrid" source="previousSearches.fxml"/>
     <fx:include fx:id="creditsGrid" source="credits.fxml"/>
-    <fx:include fx:id="theHarvesterSettings" source="theHarvesterSettings.fxml"/>
+    <fx:include fx:id="theHarvesterSettingsGrid" source="theHarvesterSettings.fxml"/>
 </StackPane>
