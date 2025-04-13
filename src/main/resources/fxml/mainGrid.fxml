@@ -108,7 +108,7 @@
             <padding>
 
             </padding>
-            <Label fx:id="title" text="INTERSCOPE" styleClass="menu-title"/>
+            <Label fx:id="title" text="INTERSCOPE" styleClass="title"/>
             <Text fx:id="description" wrappingWidth="220" styleClass="description-text"
                   text="Welcome to InterScope! InterScope is an application that consolidates the functionality of OSINT tools into a single, user-friendly platform, making it accessible without prior expertise. Developed by Ribár Krisztián as part of a thesis project."
                   VBox.vgrow="ALWAYS"/>

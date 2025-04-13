@@ -9,6 +9,7 @@ import javafx.stage.Stage;
 import javafx.scene.image.Image;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.Objects;
@@ -73,6 +74,9 @@ public class InterScopeLauncher extends Application {
                 if (containerId != null && !containerId.isEmpty()) {
                     return;
                 }
+                    // Remove stopped container if exists
+                new ProcessBuilder("docker", "rm", "-f", "interscope-tools").start().waitFor();
+
                 // Check if the image exists
                 Process imageProcess = new ProcessBuilder("docker", "images", "interscope-tools", "-q").start();
                 String imageId = new BufferedReader(new InputStreamReader(imageProcess.getInputStream())).readLine();

@@ -122,35 +122,7 @@
     -fx-background-color: white;
 }
 
-.table-view .column-header-background .filler {
-    -fx-background-color: transparent;
-    -fx-size: 0;
-}
-
-.table-view .column-header-background .show-hide-columns-button {
-    -fx-background-color: transparent;
-}
-
-.harvester-table .column-header-background {
-    visibility: hidden;
-    -fx-padding: 0;
-    -fx-pref-height: 0;
-    -fx-max-height: 0;
-}
-
-.harvester-table .column-header {
-    visibility: hidden;
-    -fx-padding: 0;
-    -fx-pref-height: 0;
-    -fx-max-height: 0;
-}
-
-.table-view .placeholder .label {
-    -fx-text-fill: white;
-}
-
-/* TextArea Output Styling */
-.harvester-output {
+.output-box {
     -fx-background-color: #111016;
     -fx-background-radius: 15px;
     -fx-border-radius: 15px;
@@ -160,51 +132,51 @@
     -fx-padding: 0;
 }
 
-.harvester-output .content {
+.output-box .content {
     -fx-background-color: #111016;
     -fx-background-radius: 10px;
 }
 
-.harvester-output .scroll-pane {
+.output-box .scroll-pane {
     -fx-background-color: transparent;
 }
 
-.harvester-output .scroll-pane .viewport {
+.output-box .scroll-pane .viewport {
     -fx-background-color: transparent;
 }
 
-.harvester-output .scroll-pane .content {
+.output-box .scroll-pane .content {
     -fx-background-color: #111016;
 }
 
-.harvester-output .scroll-bar:vertical,
-.harvester-output .scroll-bar:horizontal {
+.output-box .scroll-bar:vertical,
+.output-box .scroll-bar:horizontal {
     -fx-background-color: transparent;
     -fx-background-radius: 0;
 }
 
-.harvester-output .scroll-bar:vertical .thumb,
-.harvester-output .scroll-bar:horizontal .thumb {
+.output-box .scroll-bar:vertical .thumb,
+.output-box .scroll-bar:horizontal .thumb {
     -fx-background-color: #3a3a3a;
     -fx-background-radius: 5px;
 }
 
-.harvester-output .scroll-bar:vertical .track,
-.harvester-output .scroll-bar:horizontal .track {
+.output-box .scroll-bar:vertical .track,
+.output-box .scroll-bar:horizontal .track {
     -fx-background-color: transparent;
 }
 
-.harvester-output .scroll-bar .increment-button,
-.harvester-output .scroll-bar .decrement-button {
+.output-box .scroll-bar .increment-button,
+.output-box .scroll-bar .decrement-button {
     -fx-background-color: transparent;
     -fx-border-color: transparent;
 }
 
-.harvester-output .scroll-bar .increment-arrow,
-.harvester-output .scroll-bar .decrement-arrow {
+.output-box .scroll-bar .increment-arrow,
+.output-box .scroll-bar .decrement-arrow {
     -fx-background-color: white;
 }
 
-.harvester-output .corner {
+.output-box .corner {
     -fx-background-color: transparent;
 }

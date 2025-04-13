@@ -40,7 +40,7 @@ public class MenuController {
     @FXML private GridPane creditsGrid;
     @Getter
     @FXML private GridPane activeGrid;
-    @FXML Label title;
+    @FXML private Label title;
     @FXML private Text description;
 
     @FXML

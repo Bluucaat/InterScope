@@ -94,8 +94,7 @@ public class TheHarvesterController {
             @Override
             protected void succeeded() {
                 Platform.runLater(() -> {
-                    // Save the search results
-                    if (!outputBuffer.isEmpty() && !(outputBuffer.toString().charAt(0) == 'E')){
+                    if (!outputBuffer.isEmpty() && !(outputBuffer.toString().toLowerCase().charAt(0) == 'e')){
                         ResultSaver.saveResults("TheHarvester_" + domainNameField.getText(), outputBuffer.toString());
                     }
                     

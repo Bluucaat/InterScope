@@ -16,7 +16,7 @@
           maxWidth="850"
           translateX="-150"
           translateY="-850"
-          stylesheets="@../styles/theHarvesterSettings.css"
+          stylesheets="@../styles/submenus.css"
           fx:controller="hu.unideb.interscope.controller.TheHarvesterController">
           
     <VBox spacing="20" alignment="CENTER">
@@ -45,7 +45,7 @@
         </HBox>
 
         <TextArea fx:id="theHarvesterOutputBox"
-                  styleClass="harvester-output"
+                  styleClass="output-box"
                   VBox.vgrow="ALWAYS"
                   editable="false"
                   wrapText="true"

@@ -34,7 +34,7 @@
         </HBox>
 
         <TextArea fx:id="spiderfootOutputBox"
-                  styleClass="harvester-output"
+                  styleClass="output-box"
                   VBox.vgrow="ALWAYS"
                   editable="false"
                   wrapText="true"
