@@ -99,7 +99,7 @@
             <ImageView fitWidth="220" preserveRatio="true">
                 <Image url="@/InterScopeMenuLogo.png"/>
             </ImageView>
-            <Label fx:id="title" text="INTERSCOPE" styleClass="title"/>
+            <Label fx:id="title" text="INTERSCOPE" styleClass="title" style="-fx-padding: 10 0 40 0;"/>
             <Text fx:id="description" wrappingWidth="220" styleClass="description-text"
                   text="Welcome to InterScope! InterScope is an application that consolidates the functionality of OSINT tools into a single,
                    user-friendly platform, making it accessible without prior expertise. Developed by Ribár Krisztián as part of a thesis project."

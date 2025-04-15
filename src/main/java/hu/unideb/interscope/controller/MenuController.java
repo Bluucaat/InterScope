@@ -74,8 +74,7 @@ public class MenuController {
             
             swapGrids(previousSearchesGrid, AppPart.MAIN_MENU);
             title.setText("Previous\nSearches");
-            description.setText("Here you can find your previous searches. Maybe I'll also implement a way to " +
-                    "re-do the searches with the same parameters, though it's unlikely.");
+            description.setText("This section displays your previous searches. Note that SpiderFoot logs are managed separately and can be accessed via its own built-in web interface.");
         } else if (event.getSource() == creditsButton) {
             swapGrids(creditsGrid, AppPart.MAIN_MENU);
         } else if (event.getSource() == exitButton) {

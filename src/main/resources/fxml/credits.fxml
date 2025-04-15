@@ -8,6 +8,12 @@
         maxHeight="650" maxWidth="850" translateX="-150" translateY="-850">
     <VBox spacing="40" alignment="CENTER">
         <Label styleClass="title">About</Label>
-        <Text styleClass="description-text" wrappingWidth="600">This project was developed by Ribár Krisztián, to allow the use of OSINT tools cross-platform without any prior knowledge of such tools.</Text>
+        <Text styleClass="description-text" wrappingWidth="600" style="-fx-font-size: 20;">
+            This project was created by Ribár Krisztián with the goal of making powerful OSINT (Open-Source Intelligence)
+            tools more accessible across platforms, especially for users without prior experience in cybersecurity or
+            command-line tools. The application acts as a unified interface for existing tools. These tools are open-source
+            and were developed by their respective authors — full credit goes to them for their original work. This app simply
+            brings them together in a simple-to-use environment.
+        </Text>
     </VBox>
 </GridPane>

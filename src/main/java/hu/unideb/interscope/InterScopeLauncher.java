@@ -73,6 +73,9 @@ public class InterScopeLauncher extends Application {
                         return;
                     }
                 } catch (Exception e) {
+                    Platform.runLater(() -> new Alert(Alert.AlertType.ERROR,
+                            "Docker is not running or is not installed. Please start/install Docker first, and run the application again.",
+                            ButtonType.OK).show());
                     logger.error("Error while checking for Docker", e);
                     return;
                 }
