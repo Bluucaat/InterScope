@@ -66,15 +66,15 @@ public class InterScopeLauncher extends Application {
                     Process dockerCheck = new ProcessBuilder("docker", "info").redirectErrorStream(true).start();
                     int exitCode = dockerCheck.waitFor();
                     if (exitCode != 0) {
-                        logger.error("Docker is not running or is not installed. Please start/install Docker first, and run the application again.");
+                        logger.error("Docker is not running. Please start Docker first, and run the application again.");
                         Platform.runLater(() -> new Alert(Alert.AlertType.ERROR,
-                                "Docker is not running or is not installed. Please start/install Docker first, and run the application again.",
+                                "Docker is not running. Please start Docker first, and run the application again.",
                                 ButtonType.OK).show());
                         return;
                     }
                 } catch (Exception e) {
                     Platform.runLater(() -> new Alert(Alert.AlertType.ERROR,
-                            "Docker is not running or is not installed. Please start/install Docker first, and run the application again.",
+                            "Docker is not running or is not in the system PATH. Please ensure Docker is installed, running, and accessible..",
                             ButtonType.OK).show());
                     logger.error("Error while checking for Docker", e);
                     return;
