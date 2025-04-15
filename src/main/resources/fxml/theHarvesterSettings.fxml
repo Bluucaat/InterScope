@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.control.*?>
@@ -8,25 +7,22 @@
 <?import javafx.collections.FXCollections?>
 <?import java.lang.String?>
 <?import javafx.scene.layout.ColumnConstraints?>
-
-<GridPane xmlns:fx="http://javafx.com/fxml/1"
-          fx:id="settingsPane"
-          styleClass="settings-grid"
-          alignment="CENTER"
-          translateY="-805"
-          maxWidth="750"
-          maxHeight="500"
-          stylesheets="@../styles/theHarvesterSettings.css"
-          fx:controller="hu.unideb.interscope.controller.TheHarvesterSettingsController">
-
+<GridPane
+        xmlns:fx="http://javafx.com/fxml/1"
+        fx:id="settingsPane"
+        styleClass="settings-grid"
+        alignment="CENTER"
+        translateY="-805"
+        maxWidth="750"
+        maxHeight="500"
+        stylesheets="@../styles/theHarvesterSettings.css"
+        fx:controller="hu.unideb.interscope.controller.TheHarvesterSettingsController">
     <VBox spacing="40" alignment="CENTER">
-        
         <GridPane hgap="30" vgap="40" alignment="CENTER">
             <columnConstraints>
                 <ColumnConstraints minWidth="200" halignment="LEFT" />
                 <ColumnConstraints minWidth="300" />
             </columnConstraints>
-            
             <Text GridPane.rowIndex="0" GridPane.columnIndex="0" styleClass="label-text" GridPane.halignment="LEFT">DATA SOURCE</Text>
             <ComboBox fx:id="dataSourceComboBox" GridPane.rowIndex="0" GridPane.columnIndex="1" prefWidth="300" styleClass="input-field" value="all">
                 <items>
@@ -47,10 +43,8 @@
                     </FXCollections>
                 </items>
             </ComboBox>
-            
             <Text GridPane.rowIndex="1" GridPane.columnIndex="0" styleClass="label-text" GridPane.halignment="LEFT">START</Text>
             <TextField fx:id="startTextField" GridPane.rowIndex="1" GridPane.columnIndex="1" prefWidth="300" styleClass="input-field" text="0" />
-            
             <Text GridPane.rowIndex="2" GridPane.columnIndex="0" styleClass="label-text" GridPane.halignment="LEFT">LIMIT</Text>
             <ComboBox fx:id="limitComboBox" GridPane.rowIndex="2" GridPane.columnIndex="1" prefWidth="300" styleClass="input-field" value="500">
                 <items>
@@ -65,7 +59,6 @@
                     </FXCollections>
                 </items>
             </ComboBox>
-            
             <Text GridPane.rowIndex="3" GridPane.columnIndex="0" styleClass="label-text" GridPane.halignment="LEFT">USE SHODAN</Text>
             <HBox GridPane.rowIndex="3" GridPane.columnIndex="1" spacing="20" alignment="CENTER_LEFT" styleClass="radio-container">
                 <fx:define>
@@ -75,7 +68,6 @@
                 <RadioButton fx:id="shodanOff" styleClass="radio-button" text="OFF" selected="true" toggleGroup="$shodanToggleGroup" />
             </HBox>
         </GridPane>
-        
         <HBox spacing="20" alignment="CENTER">
             <Button fx:id="cancelButton" text="CANCEL" styleClass="cancel-button" prefWidth="150" prefHeight="40" />
             <Button fx:id="saveButton" text="SAVE" styleClass="save-button" prefWidth="150" prefHeight="40" />

@@ -19,8 +19,8 @@ public class SpiderfootController {
 
     @FXML
     private void initialize() {
-        startSpiderfootButton.setOnAction(event -> toggleSpiderfoot());
-        openInBrowserButton.setOnAction(event -> openInBrowser());
+        startSpiderfootButton.setOnAction(_ -> toggleSpiderfoot());
+        openInBrowserButton.setOnAction(_ -> openInBrowser());
         openInBrowserButton.setDisable(true);
     }
     
@@ -84,13 +84,18 @@ public class SpiderfootController {
 
     private void openInBrowser() {
         try {
-            ProcessBuilder processBuilder = new ProcessBuilder("cmd.exe", "/c", "start", "http://localhost:5001");
-            processBuilder.start();
+            String os = System.getProperty("os.name").toLowerCase();
+            if (os.contains("win") || os.contains("mac")) {
+                java.awt.Desktop.getDesktop().browse(new java.net.URI("http://localhost:5001"));
+            } else {
+                new ProcessBuilder("xdg-open", "http://localhost:5001").start();
+            }
         } catch (Exception e) {
             addOutput("Error opening browser: " + e.getMessage());
         }
     }
-    
+
+
     private void setSpiderfootRunning(boolean running) {
         isSpiderfootRunning = running;
         
@@ -102,12 +107,13 @@ public class SpiderfootController {
             openInBrowserButton.setDisable(true);
         }
     }
-    
+
     private void addOutput(String line) {
         if (line != null && !line.trim().isEmpty()) {
             outputBuffer.append(line).append("\n");
-            spiderfootOutputBox.setText(outputBuffer.toString());
+            spiderfootOutputBox.appendText(line + "\n");
             spiderfootOutputBox.positionCaret(outputBuffer.length());
         }
     }
+
 } 

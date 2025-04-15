@@ -1,9 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<?import javafx.scene.layout.GridPane?>
-<GridPane xmlns:fx="http://javafx.com/fxml/1" fx:id="logsGrid" styleClass="grid"
-          maxHeight="650"
-          maxWidth="850"
-          translateX="-150"
-          translateY="-850">
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<GridPane
+        xmlns:fx="http://javafx.com/fxml/1" styleClass="grid" maxHeight="650"
+        maxWidth="850" translateX="-150" translateY="-850" stylesheets="@../styles/submenus.css"
+        fx:controller="hu.unideb.interscope.controller.LogsController">
+    <VBox spacing="20" alignment="CENTER">
+        <HBox spacing="30"
+              alignment="CENTER">
+            <HBox alignment="CENTER_LEFT" HBox.hgrow="ALWAYS">
+                <ImageView fitWidth="70" preserveRatio="true">
+                    <Image url="@/logsLogo.png"/>
+                </ImageView>
+            </HBox>
+            <HBox alignment="CENTER" HBox.hgrow="ALWAYS">
+                <Label text="search history"
+                       styleClass="title"/>
+            </HBox>
+            <HBox alignment="CENTER_RIGHT" HBox.hgrow="ALWAYS">
+                <Button fx:id="clearButton" text="Clear" styleClass="search-button"
+                        minWidth="140" onAction="#handleClearButtonClick"/>
+            </HBox>
+        </HBox>
+        <StackPane VBox.vgrow="ALWAYS">
+            <TableView fx:id="logsTable" prefWidth="750" prefHeight="500"
+                       styleClass="table-view" style="-fx-padding: 5px;">
+                <columns>
+                    <TableColumn fx:id="toolColumn" text="tool" prefWidth="150"
+                                 style="-fx-alignment: CENTER;"/>
+                    <TableColumn fx:id="targetColumn" text="target" prefWidth="250"
+                                 style="-fx-alignment: CENTER;"/>
+                    <TableColumn fx:id="dateColumn" text="date" prefWidth="150"
+                                 style="-fx-alignment: CENTER;"/>
+                    <TableColumn fx:id="actionsColumn" prefWidth="150"
+                                 style="-fx-alignment: CENTER;"
+                                 reorderable="false"/>
+                </columns>
+                <columnResizePolicy>
+                    <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+                </columnResizePolicy>
+            </TableView>
+            <TextArea fx:id="detailsTextArea" prefWidth="750" prefHeight="500"
+                      styleClass="output-box" wrapText="true" editable="false" visible="false"/>
+        </StackPane>
+    </VBox>
 </GridPane>

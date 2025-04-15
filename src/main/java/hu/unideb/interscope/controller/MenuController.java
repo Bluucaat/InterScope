@@ -16,11 +16,10 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
 import lombok.Getter;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class MenuController {
-
-    public GridPane theHarvesterSettingsGrid;
-
     private enum AppPart {
         MAIN_MENU, SIDE_MENU
     }
@@ -38,10 +37,14 @@ public class MenuController {
     @FXML private GridPane spiderfootGrid;
     @FXML private GridPane previousSearchesGrid;
     @FXML private GridPane creditsGrid;
+    @FXML public GridPane theHarvesterSettingsGrid;
     @Getter
     @FXML private GridPane activeGrid;
     @FXML private Label title;
     @FXML private Text description;
+    @FXML private LogsController previousSearchesGridController;
+
+    private static final Logger logger = LoggerFactory.getLogger(MenuController.class);
 
     @FXML
     public void initialize() {
@@ -67,6 +70,8 @@ public class MenuController {
             title.setText("SpiderFoot");
             description.setText("SpiderFoot is an open source intelligence automation tool. Its goal is to automate the process of gathering intelligence about a given target.");
         } else if (event.getSource() == logsButton) {
+            refreshPreviousSearchesTable();
+            
             swapGrids(previousSearchesGrid, AppPart.MAIN_MENU);
             title.setText("Previous\nSearches");
             description.setText("Here you can find your previous searches. Maybe I'll also implement a way to " +
@@ -131,5 +136,15 @@ public class MenuController {
         transition.setToY(slideOut ? 100 : 5);
         backButton.setDisable(slideOut);
         transition.play();
+    }
+
+    private void refreshPreviousSearchesTable() {
+        try {
+            if (previousSearchesGridController != null) {
+                previousSearchesGridController.refreshLogsTable();
+            }
+        } catch (Exception e) {
+            logger.error("Error refreshing previous searches: {} ", e.getMessage());
+        }
     }
 }

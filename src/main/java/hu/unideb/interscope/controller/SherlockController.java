@@ -1,6 +1,7 @@
 package hu.unideb.interscope.controller;
 
-import hu.unideb.interscope.utils.ResultSaver;
+import hu.unideb.interscope.repository.LogRepository;
+import hu.unideb.interscope.utils.JSONResultWriter;
 import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -82,7 +83,8 @@ public class SherlockController {
             protected void succeeded() {
                 Platform.runLater(() -> {
                     if (!outputBuffer.isEmpty()) {
-                        ResultSaver.saveResults("Sherlock_" + username, outputBuffer.toString());
+                        JSONResultWriter.saveResults("Sherlock_" + username, outputBuffer.toString());
+                        LogRepository.parseLogs();
                     }
                     
                     searchButton.setDisable(false);

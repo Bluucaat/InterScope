@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.image.Image?>
@@ -7,32 +6,21 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.layout.HBox?>
-
-<GridPane xmlns:fx="http://javafx.com/fxml/1"
-          styleClass="grid"
-          maxHeight="650"
-          maxWidth="850"
-          translateX="-150"
-          translateY="-850"
-          stylesheets="@../styles/submenus.css"
-          fx:controller="hu.unideb.interscope.controller.SpiderfootController">
-          
+<GridPane
+        xmlns:fx="http://javafx.com/fxml/1" styleClass="grid" maxHeight="650" maxWidth="850"
+        translateX="-150" translateY="-850" stylesheets="@../styles/submenus.css"
+        fx:controller="hu.unideb.interscope.controller.SpiderfootController">
     <VBox spacing="20" alignment="CENTER">
         <HBox spacing="30"
               alignment="CENTER">
             <ImageView fitWidth="70" preserveRatio="true">
                 <Image url="@/SpiderFootLogo.png"/>
             </ImageView>
-            <Button fx:id="startSpiderfootButton"
-                    text="START SPIDERFOOT"
-                    minWidth="180"
-                    styleClass="search-button"/>
-            <Button fx:id="openInBrowserButton"
-                    text="OPEN IN BROWSER"
-                    minWidth="180"
-                    styleClass="search-button"/>
+            <Button fx:id="startSpiderfootButton" text="START SPIDERFOOT"
+                    minWidth="180" styleClass="search-button"/>
+            <Button fx:id="openInBrowserButton" text="OPEN IN BROWSER"
+                    minWidth="180" styleClass="search-button"/>
         </HBox>
-
         <TextArea fx:id="spiderfootOutputBox"
                   styleClass="output-box"
                   VBox.vgrow="ALWAYS"

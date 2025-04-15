@@ -1,7 +1,8 @@
 package hu.unideb.interscope.controller;
 
+import hu.unideb.interscope.repository.LogRepository;
 import hu.unideb.interscope.utils.AnimationHelper;
-import hu.unideb.interscope.utils.ResultSaver;
+import hu.unideb.interscope.utils.JSONResultWriter;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
@@ -95,7 +96,8 @@ public class TheHarvesterController {
             protected void succeeded() {
                 Platform.runLater(() -> {
                     if (!outputBuffer.isEmpty() && !(outputBuffer.toString().toLowerCase().charAt(0) == 'e')){
-                        ResultSaver.saveResults("TheHarvester_" + domainNameField.getText(), outputBuffer.toString());
+                        LogRepository.parseLogs();
+                        JSONResultWriter.saveResults("TheHarvester_" + domainNameField.getText(), outputBuffer.toString());
                     }
                     
                     searchButton.setDisable(false);

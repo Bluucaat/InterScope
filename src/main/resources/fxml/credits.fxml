@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.control.Label?>
-<GridPane xmlns:fx="http://javafx.com/fxml/1" fx:id="creditsGrid" stylesheets="@../styles/submenus.css" styleClass="grid"
-          maxHeight="650"
-          maxWidth="850"
-          translateX="-150"
-          translateY="-850">
+<GridPane
+        xmlns:fx="http://javafx.com/fxml/1" fx:id="creditsGrid" stylesheets="@../styles/submenus.css" styleClass="grid"
+        maxHeight="650" maxWidth="850" translateX="-150" translateY="-850">
     <VBox spacing="40" alignment="CENTER">
         <Label styleClass="title">About</Label>
         <Text styleClass="description-text" wrappingWidth="600">This project was developed by Ribár Krisztián, to allow the use of OSINT tools cross-platform without any prior knowledge of such tools.</Text>
