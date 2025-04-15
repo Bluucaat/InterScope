@@ -32,8 +32,7 @@ public class TheHarvesterSettingsController {
 
         startTextField.textProperty().addListener((_, oldValue, newValue) -> {
             newValue = newValue.replaceAll("\\D", "");
-            
-            // If empty, allow it (will be handled by the next validation)
+
             if (newValue.isEmpty()) {
                 startTextField.setText("");
                 return;

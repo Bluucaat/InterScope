@@ -41,8 +41,7 @@ public class InterScopeLauncher extends Application {
         Platform.exit();
         System.exit(0);
     }
-    
-    // Single method to stop the container, both for window close and exit button
+
     private static void stopContainer() {
         try {
             new ProcessBuilder("docker", "stop", "interscope-tools").start();
@@ -54,7 +53,6 @@ public class InterScopeLauncher extends Application {
     private void startDockerContainer() {
         CompletableFuture.runAsync(() -> {
             try {
-                // Check if Docker is running with a simple command
                 try {
                     Process dockerCheck = new ProcessBuilder("docker", "info").redirectErrorStream(true).start();
                     int exitCode = dockerCheck.waitFor();
@@ -66,53 +64,62 @@ public class InterScopeLauncher extends Application {
                     logger.error("Error while checking for Docker: {}", e.getMessage());
                     return;
                 }
-                
-                // Check if the container is running
+
                 Process runningProcess = new ProcessBuilder("docker", "ps", "--filter", "name=interscope-tools", "-q").start();
-                String containerId = new BufferedReader(new InputStreamReader(runningProcess.getInputStream())).readLine();
-                
-                if (containerId != null && !containerId.isEmpty()) {
+                String runningContainerId = new BufferedReader(new InputStreamReader(runningProcess.getInputStream())).readLine();
+
+                if (runningContainerId != null && !runningContainerId.isEmpty()) {
                     return;
                 }
-                    // Remove stopped container if exists
-                new ProcessBuilder("docker", "rm", "-f", "interscope-tools").start().waitFor();
 
-                // Check if the image exists
+                Process existingProcess = new ProcessBuilder("docker", "ps", "-a", "--filter", "name=interscope-tools", "-q").start();
+                String existingContainerId = new BufferedReader(new InputStreamReader(existingProcess.getInputStream())).readLine();
+
+                if (existingContainerId != null && !existingContainerId.isEmpty()) {
+                    Process startProcess = new ProcessBuilder("docker", "start", "interscope-tools").start();
+                    if (startProcess.waitFor() == 0) {
+                        logger.info("Successfully started existing container 'interscope-tools'.");
+                    }
+                    return;
+                }
+
+                logger.info("Container 'interscope-tools' not found. Creating a new one.");
+
                 Process imageProcess = new ProcessBuilder("docker", "images", "interscope-tools", "-q").start();
                 String imageId = new BufferedReader(new InputStreamReader(imageProcess.getInputStream())).readLine();
                 
                 if (imageId == null || imageId.isEmpty()) {
-                    // Build the image
                     logger.info("Building Docker image from Dockerfile...");
                     String projectRoot = System.getProperty("user.dir");
                     
-                    ProcessBuilder buildBuilder = new ProcessBuilder("docker", "build", "-t", "interscope-tools", ".");
-                    buildBuilder.directory(new java.io.File(projectRoot));
-                    buildBuilder.redirectErrorStream(true);
-                    Process buildProcess = buildBuilder.start();
-                    
-                    // Log the build output
-                    BufferedReader buildReader = new BufferedReader(new InputStreamReader(buildProcess.getInputStream()));
+                    ProcessBuilder imageBuilder = new ProcessBuilder("docker", "build", "-t", "interscope-tools", ".");
+                    imageBuilder.directory(new java.io.File(projectRoot));
+                    imageBuilder.redirectErrorStream(true);
+                    Process imageBuildProcess = imageBuilder.start();
+
+                    BufferedReader buildReader = new BufferedReader(new InputStreamReader(imageBuildProcess.getInputStream()));
                     String line;
                     while ((line = buildReader.readLine()) != null) {
                         logger.info("Docker build: {}", line);
                     }
                     
-                    if (buildProcess.waitFor() != 0) {
+                    if (imageBuildProcess.waitFor() != 0) {
                         logger.error("Docker build failed");
                         return;
                     }
                 }
-                Process startProcess = new ProcessBuilder("docker", "run", "-d", "-p", "5001:5001", "--name", "interscope-tools", "interscope-tools").start();
-                startProcess.waitFor();
-                logger.info("Docker container started successfully");
+                Process runProcess = new ProcessBuilder("docker", "run", "-d", "-p", "5001:5001", "--name", "interscope-tools", "interscope-tools").start();
+                if (runProcess.waitFor() == 0) {
+                    logger.info("Docker container created and started successfully");
+                } else {
+                    logger.error("Failed to create and start Docker container.");
+                }
                 
             } catch (Exception e) {
                 logger.error("Error managing Docker container: {}", e.getMessage());
             }
         });
     }
-
 
     public static void main(String[] args) {
         launch(args);

@@ -20,9 +20,9 @@ public class ResultSaver {
             String timestamp = now.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 
             try (FileWriter writer = new FileWriter(RESULTS_FILE, true)) {
-                writer.write(toolName + " - " + timestamp + "\n");
-                writer.write("[---------------------------------------------]\n");
+                writer.write(toolName + "_" + timestamp + "\n");
                 writer.write(content);
+                writer.write("[---------------------------------------------]\n");
                 writer.write("\n\n");
             }
         } catch (IOException e) {
